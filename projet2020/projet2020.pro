@@ -24,14 +24,16 @@ SOURCES += \
     commande.cpp \
     connection.cpp \
     main.cpp \
-    mainwindow.cpp \
+    mainwindow.cpp \ \
+    utilisateur.cpp
 
 
 
 HEADERS += \
     commande.h \
     connection.h \
-    mainwindow.h \
+    mainwindow.h \ \
+    utilisateur.h
 
 
 FORMS += \
