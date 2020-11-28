@@ -40,7 +40,8 @@ private slots:
 
     void on_pushButton_6_clicked();
 
-    void on_lineEdit_6_cursorPositionChanged(int arg1, int arg2);
+
+    void on_pushButton_11_clicked();
 
 private:
     Ui::MainWindow *ui;

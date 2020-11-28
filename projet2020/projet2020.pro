@@ -25,7 +25,6 @@ SOURCES += \
     connection.cpp \
     main.cpp \
     mainwindow.cpp \ \
-    utilisateur.cpp
 
 
 
@@ -33,7 +32,7 @@ HEADERS += \
     commande.h \
     connection.h \
     mainwindow.h \ \
-    utilisateur.h
+
 
 
 FORMS += \

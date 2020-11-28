@@ -20,7 +20,7 @@ class commande
     bool supprimer(QString);
     bool modifier(QString, QString, QString,QString);
         ~ commande(){}
-    int Calculcommandenum(QString num);
+
 };
 
 
