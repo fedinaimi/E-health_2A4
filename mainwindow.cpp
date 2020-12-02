@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
     ui->tableView->setModel(tmpproduit.afficher());
      ui->tableView_2->setModel(tmpfournisseur.afficher());//refresh
 }
@@ -58,12 +60,12 @@ void MainWindow::on_pushButton_clicked()
 }
 void MainWindow::on_pushButton_9_clicked()
 {
-    QString nom,prenom,telf,id;
-      int facture;
+    QString nom,prenom,telf,id,facture;
+
 
     MainWindow::notif("FOURNISSEUR","Ajout d'un fournisseur est reussite");
 
-    if( ui->lineEdit_9->text().isEmpty() || ui->lineEdit_10->text().isEmpty()|| ui->lineEdit_8->text().isEmpty()|| ui->lineEdit_13->text().isEmpty()|| ui->lineEdit_19->text().isEmpty() )
+    if( ui->lineEdit_9->text().isEmpty() || ui->lineEdit_10->text().isEmpty()|| ui->lineEdit_8->text().isEmpty()|| ui->lineEdit_13->text().isEmpty() )
     {
         ui->tableView_2->setModel(tmpfournisseur.afficher());//refresh
             QMessageBox::warning(nullptr, QObject::tr("Attention"),
@@ -74,9 +76,13 @@ void MainWindow::on_pushButton_9_clicked()
        prenom=ui->lineEdit_10->text();
         telf=ui->lineEdit_8->text();
         id=ui->lineEdit_13->text();
-         facture=ui->lineEdit_19->text().toInt();
 
 
+         if (ui->comboBox->currentIndex()==0)
+            facture="payee";
+         else {
+             facture="non payee";
+         }
 
 
     FOURNISSEUR f( nom,prenom,telf,id,facture );
@@ -138,33 +144,33 @@ void MainWindow::on_pushButton_2_clicked()
 
 
     QString ref,nom,fournisseur;
-    float prix;
-    int stock;
+        float prix;
+        int stock;
 
-    ref=ui->lineEdit_17->text();
-    nom=ui->lineEdit_12->text();
-    fournisseur=ui->lineEdit_14->text();
-    prix=ui->lineEdit_15->text().toLong();
-    stock=ui->lineEdit_16->text().toInt();
+        ref=ui->lineEdit_17->text();
+       // nom=ui->lineEdit_12->text();
+        //fournisseur=ui->lineEdit_14->text();
+        prix=ui->lineEdit_15->text().toLong();
+        stock=ui->lineEdit_16->text().toInt();
 
 
 
-     PRODUIT p(nom,ref,fournisseur,prix,stock);
-    bool test= p.modifier(ref);
+         PRODUIT p(nom,ref,fournisseur,prix,stock);
+        bool test= p.modifier(ref);
 
-    if (test)
-    {
-        QMessageBox::information(nullptr, QObject::tr("Modifier un   PRODUIT"),
-                          QObject::tr("  PRODUIT Modifié.\n"
-                                      "Click Cancel to exit."), QMessageBox::Cancel);
-          ui->tableView->setModel(tmpproduit.afficher());//refresh
-    }
-    else
-    {
-        QMessageBox::critical(nullptr, QObject::tr("Modifier un   PRODUIT"),
-                          QObject::tr("Erreur !.\n"
-                                      "Click Cancel to exit."), QMessageBox::Cancel);
-    }
+        if (test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("Modifier un   PRODUIT"),
+                              QObject::tr("  PRODUIT Modifié.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+              ui->tableView->setModel(tmpproduit.afficher());//refresh
+        }
+        else
+        {
+            QMessageBox::critical(nullptr, QObject::tr("Modifier un   PRODUIT"),
+                              QObject::tr("Erreur !.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+        }
 }
 
 void MainWindow::on_lineEdit_15_cursorPositionChanged(int arg1, int arg2)
@@ -216,12 +222,16 @@ void MainWindow::on_lineEdit_7_textChanged(const QString &arg1)
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    QString nom,prenom,telf,id;
-      int facture;
+    QString nom,prenom,telf,id,facture;
+
 
       id=ui->lineEdit_18->text();
-     facture=ui->lineEdit_20->text().toInt();
 
+      if (ui->comboBox_2->currentIndex()==0)
+          facture="payee";
+       else {
+           facture="non payee";
+       }
 
 
 
@@ -237,8 +247,86 @@ void MainWindow::on_pushButton_4_clicked()
     }
     else
     {
-        QMessageBox::critical(nullptr, QObject::tr("Modifier un   PRODUIT"),
+        QMessageBox::critical(nullptr, QObject::tr("Modifier un   FOURNISSEUR"),
                           QObject::tr("Erreur !.\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
     }
 }
+
+void MainWindow::on_lineEdit_18_cursorPositionChanged(int arg1, int arg2)
+{
+     ui->tableView_6->setModel(tmpfournisseur.recherche(ui->lineEdit_18->text()));
+}
+
+
+
+
+void MainWindow::on_pushButton_5_clicked()
+{
+    QString strStream;
+                    QTextStream out(&strStream);
+
+                    const int rowCount = ui->tableView_2->model()->rowCount();
+                    const int columnCount = ui->tableView_2->model()->columnCount();
+
+                    out <<  "<html>\n"
+                        "<head>\n"
+                        "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                        <<  QString("<title>%1</title>\n").arg("strTitle")
+                        <<  "</head>\n"
+                        "<body bgcolor=#ffffff link=#5000A0>\n"
+
+                       //     "<align='right'> " << datefich << "</align>"
+                        "<center> <H1>Liste des commandes </H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+
+                    // headers
+                    out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
+                    for (int column = 0; column < columnCount; column++)
+                        if (!ui->tableView_2->isColumnHidden(column))
+                            out << QString("<th>%1</th>").arg(ui->tableView_2->model()->headerData(column, Qt::Horizontal).toString());
+                    out << "</tr></thead>\n";
+
+                    // data table
+                    for (int row = 0; row < rowCount; row++) {
+                        out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
+                        for (int column = 0; column < columnCount; column++) {
+                            if (!ui->tableView_2->isColumnHidden(column)) {
+                                QString data = ui->tableView_2->model()->data(ui->tableView_2->model()->index(row, column)).toString().simplified();
+                                out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                            }
+                        }
+                        out << "</tr>\n";
+                    }
+                    out <<  "</table> </center>\n"
+                        "</body>\n"
+                        "</html>\n";
+
+              QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Sauvegarder en PDF", QString(), "*.pdf");
+                if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+
+               QPrinter printer (QPrinter::PrinterResolution);
+                printer.setOutputFormat(QPrinter::PdfFormat);
+               printer.setPaperSize(QPrinter::A4);
+              printer.setOutputFileName(fileName);
+
+               QTextDocument doc;
+                doc.setHtml(strStream);
+                doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+                doc.print(&printer);
+}
+
+void MainWindow::on_pushButton_6_clicked()
+{
+
+    QPrinter printer;
+
+    printer.setPrinterName("desiered printer name");
+
+  QPrintDialog dialog(&printer,this);
+
+    if(dialog.exec()== QDialog::Rejected)
+
+        return;
+}
+
+

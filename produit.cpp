@@ -27,6 +27,7 @@ QSqlQueryModel * PRODUIT::afficher()
         model->setHeaderData(2, Qt::Horizontal, QObject::tr("FOURNISSEUR"));
         model->setHeaderData(3, Qt::Horizontal, QObject::tr("PRIX"));
         model->setHeaderData(4, Qt::Horizontal, QObject::tr("STOCK"));
+        model->setQuery("SELECT NOM, REF, FOURNISSEUR,PRIX,STOCK FROM PRODUIT ORDER BY STOCK ");//trier
         return model;
 }
 bool PRODUIT::supprimer(QString ref)
@@ -44,12 +45,12 @@ bool PRODUIT::modifier(QString ref)
         QString sto= QString::number(stock);
 
 
-        query.prepare("UPDATE PRODUIT SET  NOM = :nom ,REF = :ref ,  FOURNISSEUR = :fournisseur , PRIX = :prix , STOCK = :stock WHERE REF = :ref " );
+        query.prepare("UPDATE PRODUIT SET PRIX = :prix , STOCK = :stock  WHERE REF = :ref ");
         query.bindValue(":nom", nom);
         query.bindValue(":ref", ref);
         query.bindValue(":fournisseur", fournisseur);
-         query.bindValue(":prix", pri);
-          query.bindValue(":stock", sto);
+        query.bindValue(":prix", pri);
+        query.bindValue(":stock", sto);
         return query.exec();
 
 

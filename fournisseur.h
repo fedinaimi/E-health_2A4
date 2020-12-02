@@ -4,17 +4,22 @@
 #include<QString>
 #include<QSqlQueryModel>
 #include<QSqlQuery>
+#include<QPainter>
+#include <QGraphicsItem>
+#include <QtCharts>
+#include <QBarSeries>
+#include <QBarSet>
 
 
 class FOURNISSEUR
 {
 private:
-    QString nom,prenom,telf,id;
+    QString nom,prenom,telf,id,facture;
 
-    int facture;
+
 public:
     FOURNISSEUR();
-   FOURNISSEUR(QString nom,QString prenom ,QString telf ,QString id,int facture){
+   FOURNISSEUR(QString nom,QString prenom ,QString telf ,QString id,QString facture){
         this->nom = nom ;
         this->prenom = prenom;
        this->telf=telf;
@@ -31,11 +36,12 @@ public:
     QString gettelf(){return this->telf;}
     void setid(QString id){this->id=id;}
     QString getid(){return this->id;}
-    void setfacture(int facture){this->facture=facture;}
-    int getfacture(){return this->facture;}
+    void setfacture(QString facture){this->facture=facture;}
+    QString getfacture(){return this->facture;}
     bool ajouter();
     bool modifier(QString id);
     bool supprimer(QString id);
+    void stat_grs();
     QSqlQueryModel * afficher();
     QSqlQueryModel * recherche(QString id);
 };

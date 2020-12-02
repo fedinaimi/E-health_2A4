@@ -1,6 +1,8 @@
 QT       += core gui
 QT+= sql
-
+QT       +=printsupport
+QT += charts
+QT += datavisualization
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -36,3 +38,10 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    desi.qrc
+
+DISTFILES += \
+    sources/docteur-medecine-tenant-comprime-couleur-capsule-dans-main-connexion-reseau-medical-icone-concept-reseau-technologie-medicale_34200-324.jpg \
+    sources/logo.png
