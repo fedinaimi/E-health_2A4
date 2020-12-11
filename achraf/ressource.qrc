@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>Ressource/background.jpg</file>
+        <file>Ressource/Background_color.png</file>
+        <file>Ressource/button_clicked.png</file>
+        <file>Ressource/button_init.png</file>
+        <file>Ressource/cancel.png</file>
+        <file>Ressource/checked.png</file>
+        <file>Ressource/fich.png</file>
+        <file>Ressource/icon_add.png</file>
+        <file>Ressource/icon_edit.png</file>
+        <file>Ressource/job.png</file>
+        <file>Ressource/kk.png</file>
+        <file>Ressource/more.png</file>
+        <file>Ressource/pencil.png</file>
+        <file>Ressource/prescription.png</file>
+    </qresource>
+</RCC>
