@@ -6,7 +6,7 @@
 #include <QSqlQueryModel>
 
 
-
+/*aaa*/
 
 class facture
 {
