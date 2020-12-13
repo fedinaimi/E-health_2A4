@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>menu</class>
+ <widget class="QDialog" name="menu">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Menu</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#MyLoginForm {
+background: red;
+}
+
+#mainFrame {
+border: 3px solid red;
+border-radius: 40px;
+background: white;
+}
+QLineEdit {
+padding: 1px;
+border-style: solid;
+border: 2px solid green;
+border-radius: 8px;
+}
+
+QPushButton {
+color: white;
+  background: bleu;
+
+border-width: 2px;
+border-color: gray;
+border-style: solid;
+border-radius: 10;
+padding: 3px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 150px;
+max-width: 150px;
+min-height: 35px;
+max-height: 35px;
+}
+QLabel {
+font-weight: blue;
+font-size: 13px;
+}
+QPushButton:hover { background-color: #66c011; }
+</string>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>10</y>
+     <width>166</width>
+     <height>581</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QPushButton" name="pushButton">
+      <property name="minimumSize">
+       <size>
+        <width>164</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>164</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>ordonnance</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_3">
+      <property name="minimumSize">
+       <size>
+        <width>164</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>164</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>medicament</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>164</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>164</width>
+        <height>45</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>exit</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>medic</class>
+ <widget class="QDialog" name="medic">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QStackedWidget" name="stackedWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>791</width>
+     <height>591</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#MyLoginForm {
+background: red;
+}
+
+#mainFrame {
+border: 3px solid red;
+border-radius: 40px;
+background: white;
+}
+QLineEdit {
+padding: 1px;
+border-style: solid;
+border: 2px solid green;
+border-radius: 8px;
+}
+
+QPushButton {
+color: white;
+  background: bleu;
+
+border-width: 2px;
+border-color: gray;
+border-style: solid;
+border-radius: 10;
+padding: 3px;
+font-size: 12px;
+padding-left: 5px;
+padding-right: 5px;
+min-width: 150px;
+max-width: 150px;
+min-height: 35px;
+max-height: 35px;
+}
+QLabel {
+font-weight: blue;
+font-size: 13px;
+}
+QPushButton:hover { background-color: #66c011; }
+</string>
+   </property>
+   <property name="currentIndex">
+    <number>2</number>
+   </property>
+   <widget class="QWidget" name="page_13">
+    <widget class="QWidget" name="layoutWidget_9">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>20</y>
+       <width>171</width>
+       <height>561</height>
+      </rect>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_5">
+      <item>
+       <widget class="QPushButton" name="pushButton_25">
+        <property name="text">
+         <string>Ajouter</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_26">
+        <property name="text">
+         <string>Afficher</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_4">
+        <property name="text">
+         <string>modifier</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_27">
+        <property name="text">
+         <string>Rechercher</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_28">
+        <property name="text">
+         <string>Supprimer</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Retour</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_14">
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>751</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string>ajouter medicament</string>
+     </property>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>40</y>
+        <width>71</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>numero</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="line_id_3">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>40</y>
+        <width>113</width>
+        <height>20</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>120</y>
+        <width>81</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>nom</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_15">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>190</y>
+        <width>91</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>prix</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_7">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>119</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_8">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>189</y>
+        <width>113</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>510</y>
+       <width>741</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="pb_ajouter_3">
+        <property name="text">
+         <string>ajouter</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_29">
+        <property name="text">
+         <string>Retour</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_15">
+    <widget class="QWidget" name="layoutWidget_11">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>490</y>
+       <width>781</width>
+       <height>52</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_5">
+      <item>
+       <widget class="QPushButton" name="pushButton_2">
+        <property name="text">
+         <string>Refresh</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_32">
+        <property name="text">
+         <string>Retour</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QTableView" name="tableView">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>451</width>
+       <height>471</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>90</y>
+       <width>164</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>tri selon numero</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>180</y>
+       <width>164</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>tri selon nom</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_7">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>270</y>
+       <width>164</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>tri selon prix</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_17">
+    <widget class="QLineEdit" name="lineEdit_6">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>90</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_17">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>90</y>
+       <width>47</width>
+       <height>13</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>numero</string>
+     </property>
+    </widget>
+    <widget class="QTableView" name="tableView_3">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>40</y>
+       <width>571</width>
+       <height>451</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_35">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>520</y>
+       <width>164</width>
+       <height>45</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Retour</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page_18">
+    <widget class="QLabel" name="label_18">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>220</y>
+       <width>261</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>donner numero du medicament a supprimer</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="layoutWidget_12">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>500</y>
+       <width>771</width>
+       <height>52</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_6">
+      <item>
+       <widget class="QPushButton" name="pb_supprimer_3">
+        <property name="text">
+         <string>supprimer</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_36">
+        <property name="text">
+         <string>Retour</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_9">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>220</y>
+       <width>201</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="page">
+    <widget class="QTableView" name="tableView_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>401</width>
+       <height>371</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QWidget" name="formLayoutWidget">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>140</y>
+       <width>311</width>
+       <height>154</height>
+      </rect>
+     </property>
+     <layout class="QFormLayout" name="formLayout">
+      <property name="horizontalSpacing">
+       <number>10</number>
+      </property>
+      <property name="verticalSpacing">
+       <number>40</number>
+      </property>
+      <item row="0" column="1">
+       <widget class="QLineEdit" name="lineEdit_17"/>
+      </item>
+      <item row="1" column="1">
+       <widget class="QLineEdit" name="lineEdit_12"/>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_10">
+        <property name="text">
+         <string>numero</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="label_16">
+        <property name="text">
+         <string>nom de medicament</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="label_12">
+        <property name="text">
+         <string>prix</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QLineEdit" name="lineEdit_15"/>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QWidget" name="horizontalLayoutWidget_2">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>500</y>
+       <width>771</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="pushButton_5">
+        <property name="text">
+         <string>Modifier</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_37">
+        <property name="text">
+         <string>Retour</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
