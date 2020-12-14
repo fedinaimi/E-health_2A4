@@ -19,8 +19,9 @@ QSqlQueryModel * actemedicale::afficher()
 {
     QSqlQueryModel * model= new QSqlQueryModel();
 
-        model->setQuery("select * from ACTEMEDICALE ");
-          model->setQuery("select * from ACTEMEDICALE order by PRIX ");
+      //  model->setQuery("select * from ACTEMEDICALE ");//
+           model->setQuery("select * from ACTEMEDICALE ORDER BY  PRIX ");
+
         model->setHeaderData(0, Qt::Horizontal, QObject::tr("TYPE"));
         model->setHeaderData(1, Qt::Horizontal, QObject::tr("PRIX"));
         return model;

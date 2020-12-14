@@ -54,8 +54,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-ui->tableView_2->setModel(tmpacte.afficher());//refresh
+
 ui->tableView_3->setModel(tmprendez.afficher());//refresh
+ui->tableView_2->setModel(tmpacte.afficher());//refresh
+
 }
 
 MainWindow::~MainWindow()
@@ -109,6 +111,7 @@ void MainWindow::on_modifier_clicked()
 
          actemedicale a(type,prix);
         bool test= a.modifier(type);
+        ui->tableView_2->setModel(tmpacte.afficher());//refresh
 
         if (test)
         {
@@ -297,7 +300,7 @@ doc.print(&printer);
 
 void MainWindow::on_pushButton_7_clicked()
 {
-    //imprimer
+
 
         QPrinter printer;
 
