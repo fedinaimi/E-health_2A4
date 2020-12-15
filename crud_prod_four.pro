@@ -19,17 +19,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    actemedicale.cpp \
+    commande.cpp \
     connexion.cpp \
     fournisseur.cpp \
     main.cpp \
     mainwindow.cpp \
-    produit.cpp
+    produit.cpp \
+    rendezvous.cpp \
+    utilisateur.cpp
 
 HEADERS += \
+    actemedicale.h \
+    commande.h \
     connexion.h \
     fournisseur.h \
     mainwindow.h \
-    produit.h
+    produit.h \
+    rendezvous.h \
+    utilisateur.h
 
 FORMS += \
     mainwindow.ui

@@ -11,6 +11,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->tableView->setModel(tmpproduit.afficher());
      ui->tableView_2->setModel(tmpfournisseur.afficher());//refresh
+     ui->tableView_9->setModel(tmprendez.afficher());//refresh
+     ui->tableView_7->setModel(tmpacte.afficher());//refresh
+ ui->tableView_11->setModel(ajt.afficher());
 }
 
 MainWindow::~MainWindow()
@@ -26,7 +29,17 @@ void MainWindow::on_pushButton_11_clicked()
 
 void MainWindow::on_pushButton_10_clicked()
 {
-    close();
+
+    QString type = ui->lineEdit_21->text();
+        actemedicale a;
+        bool test=a.supprimer(type);
+        ui->tableView_7->setModel(tmpacte.afficher());//refresh
+        if(test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("Supprimer un acte médicale"),
+                        QObject::tr("acte médicale supprimé.\n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+        }
 }
 
 void MainWindow::on_pushButton_clicked()
@@ -330,3 +343,387 @@ void MainWindow::on_pushButton_6_clicked()
 }
 
 
+
+void MainWindow::on_pushButton_8_clicked()
+{
+
+    if( ui->lineEdit_12->text().isEmpty()|| ui->lineEdit_14->text().isEmpty())
+    {
+        ui->tableView_7->setModel(tmpacte.afficher());//refresh
+            QMessageBox::warning(nullptr, QObject::tr("Attention"),
+                        QObject::tr("Veuillez remplir tout les champs.\n"), QMessageBox::Ok);
+    }
+    else
+    {
+    actemedicale a(ui->lineEdit_12->text(),ui->lineEdit_14->text().toLong());
+    bool test=a.ajouter();
+    if (test)
+    {
+        QMessageBox::information(nullptr, QObject::tr("Ajouter un acte médicale"),
+                          QObject::tr("acte médicale ajouté.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+        ui->tableView_7->setModel(tmpacte.afficher());
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("Ajouter un acte médicale"),
+                          QObject::tr("Erreur !.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+    }
+}
+
+void MainWindow::on_modifier_clicked()
+{
+
+    QString type;
+        float prix;
+
+
+        type=ui->lineEdit_19->text();
+
+        prix=ui->lineEdit_20->text().toLong();
+
+
+
+
+         actemedicale a(type,prix);
+        bool test= a.modifier(type);
+        ui->tableView_7->setModel(tmpacte.afficher());//refresh
+
+        if (test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("Modifier un   acte médicale"),
+                              QObject::tr("  acte médicale Modifié.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+              ui->tableView_7->setModel(tmpacte.afficher());//refresh
+        }
+        else
+        {
+            QMessageBox::critical(nullptr, QObject::tr("Modifier un   acte médicale"),
+                              QObject::tr("Erreur !.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+
+}
+
+void MainWindow::on_lineEdit_21_textChanged(const QString &arg1)
+{
+     ui->tableView_8->setModel(tmpacte.recherche(ui->lineEdit_21->text()));
+}
+
+void MainWindow::on_pushButton_12_clicked()
+{
+    {
+
+
+            if( ui->lineEdit_22->text().isEmpty()|| ui->lineEdit_23->text().isEmpty())
+            {
+                ui->tableView_9->setModel(tmprendez.afficher());//refresh
+                    QMessageBox::warning(nullptr, QObject::tr("Attention"),
+                                QObject::tr("Veuillez remplir tout les champs.\n"), QMessageBox::Ok);
+            }
+            else
+            {
+            rendezvous r(ui->lineEdit_22->text(),ui->lineEdit_23->text());
+            bool test=r.ajouter();
+            if (test)
+            {
+                QMessageBox::information(nullptr, QObject::tr("Ajouter un rendez-vous"),
+                                  QObject::tr("rendez-vous ajouté.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+                ui->tableView_9->setModel(tmprendez.afficher());
+            }
+            else
+            {
+                QMessageBox::critical(nullptr, QObject::tr("Ajouter un rendez-vous"),
+                                  QObject::tr("Erreur !.\n"
+                                              "Click Cancel to exit."), QMessageBox::Cancel);
+            }
+            }
+    }
+
+}
+
+void MainWindow::on_pushButton_15_clicked()
+{
+    QString code,date;
+
+
+
+        code=ui->lineEdit_24->text();
+
+        date=ui->lineEdit_25->text();
+
+
+
+
+         rendezvous r(code,date);
+        bool test= r.modifier(code);
+
+        if (test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("Modifier un  rendez-vous"),
+                              QObject::tr("  rendez-vous Modifié.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+              ui->tableView_9->setModel(tmprendez.afficher());//refresh
+        }
+        else
+        {
+            QMessageBox::critical(nullptr, QObject::tr("Modifier un  rendez-vous"),
+                              QObject::tr("Erreur !.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+
+
+}
+
+void MainWindow::on_pushButton_16_clicked()
+{
+    QString code = ui->lineEdit_26->text();
+       rendezvous r;
+       bool test=r.supprimer(code);
+       ui->tableView_9->setModel(tmprendez.afficher());//refresh
+       if(test)
+       {
+           QMessageBox::information(nullptr, QObject::tr("Supprimer un rendez-vous"),
+                       QObject::tr("rendez-vous supprimé.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+       }
+}
+
+
+void MainWindow::on_lineEdit_26_textChanged(const QString &arg1)
+{
+       ui->tableView_10->setModel(tmprendez.recherche(ui->lineEdit_26->text()));
+}
+
+void MainWindow::on_pushButton_13_clicked()
+{
+    QString strStream;
+        QTextStream out(&strStream);
+
+        const int rowCount = ui->tableView_7->model()->rowCount();
+        const int columnCount = ui->tableView_7->model()->columnCount();
+
+        out <<  "<html>\n"
+            "<head>\n"
+            "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+            <<  QString("<title>%1</title>\n").arg("strTitle")
+            <<  "</head>\n"
+            "<body bgcolor=#ffffff link=#5000A0>\n"
+
+           //     "<align='right'> " << datefich << "</align>"
+            "<center> <H1>Liste des commandes </H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+
+        // headers
+        out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
+        for (int column = 0; column < columnCount; column++)
+            if (!ui->tableView_7->isColumnHidden(column))
+                out << QString("<th>%1</th>").arg(ui->tableView_7->model()->headerData(column, Qt::Horizontal).toString());
+        out << "</tr></thead>\n";
+
+        // data table
+        for (int row = 0; row < rowCount; row++) {
+            out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
+            for (int column = 0; column < columnCount; column++) {
+                if (!ui->tableView_7->isColumnHidden(column)) {
+                    QString data = ui->tableView_7->model()->data(ui->tableView_7->model()->index(row, column)).toString().simplified();
+                    out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                }
+            }
+            out << "</tr>\n";
+        }
+        out <<  "</table> </center>\n"
+            "</body>\n"
+            "</html>\n";
+
+    QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Sauvegarder en PDF", QString(), "*.pdf");
+    if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+
+    QPrinter printer (QPrinter::PrinterResolution);
+    printer.setOutputFormat(QPrinter::PdfFormat);
+    printer.setPaperSize(QPrinter::A4);
+    printer.setOutputFileName(fileName);
+
+    QTextDocument doc;
+    doc.setHtml(strStream);
+    doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+    doc.print(&printer);
+}
+
+void MainWindow::on_pushButton_17_clicked()
+{
+    MainWindow::notif("CMD","Ajout d'un produit est commande");
+
+    if( ui->lineEdit_27->text().isEmpty() || ui->lineEdit_28->text().isEmpty()|| ui->lineEdit_29->text().isEmpty()|| ui->lineEdit_30->text().isEmpty())
+    {
+        ui->tableView_11->setModel(ajt.afficher());//refresh
+            QMessageBox::warning(nullptr, QObject::tr("Attention"),
+                        QObject::tr("Veuillez remplir tout les champs.\n"), QMessageBox::Ok);
+    }
+    else
+    {
+    commande c(ui->lineEdit_27->text(),ui->lineEdit_28->text(),ui->lineEdit_29->text(),ui->lineEdit_30->text());
+    bool test=c.ajouter();
+    if (test)
+    {
+        QMessageBox::information(nullptr, QObject::tr("Ajouter un commande"),
+                          QObject::tr("commande ajouté.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+        ui->tableView_11->setModel(ajt.afficher());
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("Ajouter un commande"),
+                          QObject::tr("Erreur !.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+    }
+}
+
+void MainWindow::on_pushButton_21_clicked()
+{
+
+
+
+    ui->tableView_11->setModel(ajt.afficher());
+        ui->tableView_11->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        QString num=ui->lineEdit_34->text();
+        QString nom=ui->lineEdit_35->text();
+        QString code=ui->lineEdit_32->text();
+        QString d=ui->lineEdit_33->text();
+
+        commande c ;
+        bool test=c.modifier(num,nom,code,d);
+        QMessageBox msBox;
+        if(test)
+        {
+            ui->tableView_11->setModel(c.afficher());
+            ui->tableView_11->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+            msBox.setText("modification reussite");
+            msBox.exec();
+        }
+        else
+        {
+            msBox.setText("ERREUR");
+            msBox.exec();
+        }
+        ui->lineEdit_34->clear();
+        ui->lineEdit_35->clear();
+        ui->lineEdit_32->clear();
+        ui->lineEdit_33->clear();
+
+}
+
+void MainWindow::on_pushButton_20_clicked()
+{
+    QString code = ui->lineEdit_31->text();
+       commande c;
+       bool test=c.supprimer(code);
+       ui->tableView_11->setModel(tmprendez.afficher());//refresh
+       if(test)
+       {
+           QMessageBox::information(nullptr, QObject::tr("Supprimer une commande"),
+                       QObject::tr("commande supprimé.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+       }
+}
+
+void MainWindow::on_lineEdit_31_textChanged(const QString &arg1)
+{
+       ui->tableView_12->setModel(ajt.recherche(ui->lineEdit_31->text()));
+}
+#include "utilisateur.h"
+
+void MainWindow::on_pushButton_22_clicked()
+{
+    QString login=ui->lineEdit_36->text();
+      QString type ;
+    if( ui->comboBox_3->currentIndex()==0 )
+        type="medecin";
+
+                else {
+
+                type="secretaire";
+                }
+    QString mdp=ui->lineEdit_37->text();
+    utilisateur u(login,type,mdp);
+    bool test=u.ajouter();
+    ui->tableView_13->setModel(psm.afficher());
+    QMessageBox msgBox;
+    if (test)
+    {
+        ui->tableView_13->setModel(psm.afficher());
+        msgBox.setText("Ajout avec succés.");
+        msgBox.exec();
+    }
+
+    ui->lineEdit_36->clear();
+    ui->comboBox_3->clear();
+    ui->lineEdit_37->clear();
+}
+
+void MainWindow::on_pushButton_23_clicked()
+{
+    ui->tableView_13->setModel(psm.afficher());
+        ui->tableView_13->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        QString login=ui->lineEdit_36->text();
+        QString type ;
+      if( ui->comboBox_3->currentIndex()==0 )
+          type="medecin";
+
+                  else {
+
+                  type="secretaire";
+                  }
+        QString mdp=ui->lineEdit_37->text();
+
+        utilisateur u ;
+        bool test=u.modifier(login,type,mdp);
+        QMessageBox msBox;
+        if(test)
+        {
+            ui->tableView_13->setModel(u.afficher());
+            ui->tableView_13->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+            msBox.setText("modification reussite");
+            msBox.exec();
+        }
+        else
+        {
+            msBox.setText("ERREUR");
+            msBox.exec();
+        }
+        ui->lineEdit_36->clear();
+        ui->comboBox_3->clear();
+        ui->lineEdit_8->clear();
+
+}
+
+void MainWindow::on_pushButton_24_clicked()
+{
+     ui->tableView_13->setModel(psm.afficher());
+}
+
+void MainWindow::on_pushButton_25_clicked()
+{
+    QMessageBox msgBox ;
+    QString login = ui->lineEdit_36->text();
+            bool test=psm.supprimer(login);
+            if(test)
+            {ui->tableView_13->setModel(psm.afficher());//refresh
+                /*QMessageBox::information(nullptr, QObject::tr("Supprimer un utilisateur"),
+                            QObject::tr("utilisateur supprimé.\n"
+                                        "Click Cancel to exit."), QMessageBox::Cancel);*/
+                msgBox.setText("utilisateur supprimé.");
+                msgBox.exec();
+            }
+            else
+            {QMessageBox::critical(nullptr, QObject::tr("Supprimer un utilisateur"),
+                            QObject::tr("Erreur !.\n"
+                                        "Click Cancel to exit."), QMessageBox::Cancel);}
+            ui->lineEdit_36->clear();
+            ui->comboBox_3->clear();
+            ui->lineEdit_37->clear();
+
+}

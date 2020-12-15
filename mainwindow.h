@@ -6,6 +6,7 @@
 #include "fournisseur.h"
 #include <QMessageBox>
 #include <QSystemTrayIcon>
+#include "actemedicale.h"
 
 
 #include "ui_mainwindow.h"
@@ -65,6 +66,9 @@
 #include <QtCharts>
 #include <QBarSeries>
 #include <QBarSet>
+#include "rendezvous.h"
+#include "commande.h"
+#include "utilisateur.h"
 
 
 using namespace QtDataVisualization;
@@ -134,9 +138,45 @@ private slots:
 
     void on_widget_customContextMenuRequested(const QPoint &pos);
 
+    void on_pushButton_8_clicked();
+
+    void on_modifier_clicked();
+
+    void on_lineEdit_21_textChanged(const QString &arg1);
+
+    void on_pushButton_12_clicked();
+
+    void on_pushButton_15_clicked();
+
+    void on_pushButton_16_clicked();
+
+    void on_lineEdit_26_textChanged(const QString &arg1);
+
+    void on_pushButton_13_clicked();
+
+    void on_pushButton_17_clicked();
+
+    void on_pushButton_21_clicked();
+
+    void on_pushButton_20_clicked();
+
+    void on_lineEdit_31_textChanged(const QString &arg1);
+
+    void on_pushButton_22_clicked();
+
+    void on_pushButton_23_clicked();
+
+    void on_pushButton_24_clicked();
+
+    void on_pushButton_25_clicked();
+
 private:
     Ui::MainWindow *ui;
     PRODUIT tmpproduit;
     FOURNISSEUR tmpfournisseur ;
+    actemedicale tmpacte ;
+    rendezvous tmprendez ;
+     commande ajt ;
+     utilisateur psm ;
 };
 #endif // MAINWINDOW_H
