@@ -20,9 +20,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     actemedicale.cpp \
+    arduino.cpp \
     commande.cpp \
     connexion.cpp \
     fournisseur.cpp \
+    login.cpp \
     main.cpp \
     mainwindow.cpp \
     produit.cpp \
@@ -31,15 +33,18 @@ SOURCES += \
 
 HEADERS += \
     actemedicale.h \
+    arduino.h \
     commande.h \
     connexion.h \
     fournisseur.h \
+    login.h \
     mainwindow.h \
     produit.h \
     rendezvous.h \
     utilisateur.h
 
 FORMS += \
+    login.ui \
     mainwindow.ui
 
 # Default rules for deployment.

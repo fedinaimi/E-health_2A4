@@ -1,16 +1,25 @@
 #ifndef LOGIN_H
 #define LOGIN_H
-#include <QString>
-#include<QSqlQuery>
-#include<QSqlQueryModel>
 
+#include <QDialog>
 
+namespace Ui {
+class Login;
+}
 
-class login
+class Login : public QDialog
 {
+    Q_OBJECT
+
 public:
-    login();
-    login(int,)
+    explicit Login(QWidget *parent = nullptr);
+    ~Login();
+
+private slots:
+    void on_label1_linkActivated(const QString &link);
+
+private:
+    Ui::Login *ui;
 };
 
 #endif // LOGIN_H

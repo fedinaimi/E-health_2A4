@@ -69,6 +69,8 @@
 #include "rendezvous.h"
 #include "commande.h"
 #include "utilisateur.h"
+#include "login.h"
+
 
 
 using namespace QtDataVisualization;
