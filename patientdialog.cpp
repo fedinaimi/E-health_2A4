@@ -46,14 +46,14 @@ void PatientDialog::on_pushButton_clicked()
 
     if (test)
     {
-        QMessageBox::information(nullptr, QObject::tr("Modifier un   PRODUIT"),
+        QMessageBox::information(nullptr, QObject::tr("Modifier un   PATIENT"),
                           QObject::tr("  PRODUIT Modifié.\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
           ui->tableView->setModel(ptn.afficher());//refresh
     }
     else
     {
-        QMessageBox::critical(nullptr, QObject::tr("Modifier un   PRODUIT"),
+        QMessageBox::critical(nullptr, QObject::tr("Modifier un   PATIENT"),
                           QObject::tr("Erreur !.\n"
                                       "Click Cancel to exit."), QMessageBox::Cancel);
     }
