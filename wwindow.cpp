@@ -10,6 +10,15 @@
 #include <QString>
 #include <QApplication>
 #include <QLineEdit>
+#include <QFile>
+#include <QTextEdit>
+#include <QTextStream>
+#include <QFileDialog>
+
+
+
+
+
 
 
 WWindow::WWindow(QWidget *parent) :
@@ -17,7 +26,10 @@ WWindow::WWindow(QWidget *parent) :
     ui(new Ui::WWindow)
 {
     ui->setupUi(this);
+    ui->tableView->setModel(fct.afficher());
+
 }
+
 
 WWindow::~WWindow()
 {
@@ -25,7 +37,7 @@ WWindow::~WWindow()
 }
 void WWindow::refresh(){
     ui->tableView->setModel(fct.afficher());
-                       }
+     ui->tableView_2->setModel(ptn.afficher());                  }
 
 
 void WWindow::on_pushButton_clicked()
@@ -75,42 +87,7 @@ void WWindow::on_pushButton_7_clicked()
 
 }
 
-void WWindow::on_pushButton_6_clicked()
-{
 
-    int reponse =QMessageBox::question(this,"confirmation","vous .?", QMessageBox::Yes | QMessageBox::No);
-    if (reponse == QMessageBox::Yes){
-
-
-    QString num;
-    facture f;
-    bool res;
-    QModelIndex index;
-    QModelIndexList selection = ui->tableView->selectionModel()->selectedRows();
-
-    for(int i=0;i<selection.count();i++){
-
-        index=selection.at(i);
-        num=QVariant(ui->tableView->model()->index(index.row(),0).data()).toString();
-        res = f.modifier(num);
-        if (res == QDialog::Accepted)
-        {
-            ui->tableView->setModel(fct.afficher());
-        }
-
-        }
-    }
-    else if (reponse == QMessageBox::No)
-    {
-        QMessageBox::critical(this,"annulation","a ete annuler!");
-    }
-    refresh();
-
-
-
-
-
-}
 
 
 void WWindow::on_lineEdit_2_textChanged(const QString &arg1)
@@ -123,7 +100,7 @@ void WWindow::on_lineEdit_2_textChanged(const QString &arg1)
 void WWindow::on_pushButton_4_clicked()
 {
 
-    ui->tableView->setModel(fct.trier(ui->comboBox_4->currentText()));
+    ui->tableView->setModel(fct.afficher());
 }
 
 
@@ -161,14 +138,11 @@ void WWindow::on_pushButton_15_clicked()
 
 void WWindow::on_pushButton_13_clicked()
 {
-    QString nom=ui->lineEdit_3->text();
-    QString prenom=ui->lineEdit_4->text();
-    QString sexe=ui->lineEdit_5->text();
-    int num=ui->lineEdit_6->text().toInt();
+
     int numtel=ui->lineEdit_7->text().toInt();
-    QString adresse=ui->lineEdit_8->text();
-    patient p ( nom,prenom,sexe,num,numtel,adresse);
-    bool test = p.ajouter();
+
+
+    bool test = ptn.supprimer(numtel);
             if(test)
             {ui->tableView_2->setModel(ptn.afficher());//refresh
                 /*QMessageBox::information(nullptr, QObject::tr("Supprimer une facture"),
@@ -183,17 +157,182 @@ void WWindow::on_pushButton_13_clicked()
 
 }
 
-void WWindow::on_pushButton_12_clicked()
-{
 
-}
-
-void WWindow::on_pushButton_16_clicked()
-{
-
-}
 
 void WWindow::on_pushButton_10_clicked()
 {
+    ui->tableView_2->setModel(ptn.afficher());
 
+}
+
+
+
+void WWindow::on_pushButton_14_clicked()
+{
+    QTableView *table;
+
+                    table = ui->tableView_2;
+
+
+                    QString filters("Excel Files (.xls)");
+
+                    QString defaultFilter("Excel Files (*.xls)");
+
+                    QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+
+                                       filters, &defaultFilter);
+
+                    QFile file(fileName);
+
+
+                    QAbstractItemModel *model =  table->model();
+
+                    if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+
+                        QTextStream data(&file);
+
+                        QStringList strList;
+
+                        for (int i = 0; i < model->columnCount(); i++) {
+
+                            if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+
+                                strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + "\"");
+
+                            else
+
+                                strList.append("");
+
+                        }
+
+                        data << strList.join(";") << "\n";
+
+                        for (int i = 0; i < model->rowCount(); i++) {
+
+                            strList.clear();
+
+                            for (int j = 0; j < model->columnCount(); j++) {
+
+
+                                if (model->data(model->index(i, j)).toString().length() > 0)
+
+                                    strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+
+                                else
+
+                                    strList.append("");
+
+                            }
+
+                            data << strList.join(";") + "\n";
+
+                        }
+
+                        file.close();
+
+                        QMessageBox::information(nullptr, QObject::tr("Export excel"),
+
+                                                  QObject::tr("Export avec succes .\n"
+
+                                                              "Click OK to exit."), QMessageBox::Ok);
+    }
+}
+
+void WWindow::on_pushButton_8_clicked()
+{
+    QTableView *table;
+
+                    table = ui->tableView;
+
+
+                    QString filters("Excel Files (.xls)");
+
+                    QString defaultFilter("Excel Files (*.xls)");
+
+                    QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+
+                                       filters, &defaultFilter);
+
+                    QFile file(fileName);
+
+
+                    QAbstractItemModel *model =  table->model();
+
+                    if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+
+                        QTextStream data(&file);
+
+                        QStringList strList;
+
+                        for (int i = 0; i < model->columnCount(); i++) {
+
+                            if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+
+                                strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + "\"");
+
+                            else
+
+                                strList.append("");
+
+                        }
+
+                        data << strList.join(";") << "\n";
+
+                        for (int i = 0; i < model->rowCount(); i++) {
+
+                            strList.clear();
+
+                            for (int j = 0; j < model->columnCount(); j++) {
+
+
+                                if (model->data(model->index(i, j)).toString().length() > 0)
+
+                                    strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+
+                                else
+
+                                    strList.append("");
+
+                            }
+
+                            data << strList.join(";") + "\n";
+
+                        }
+
+                        file.close();
+
+                        QMessageBox::information(nullptr, QObject::tr("Export excel"),
+
+                                                  QObject::tr("Export avec succes .\n"
+
+                                                              "Click OK to exit."), QMessageBox::Ok);
+    }
+
+}
+
+void WWindow::on_pushButton_6_clicked()
+{
+    hide();
+secd = new SecDialog(this);
+secd->show();
+}
+
+
+void WWindow::on_pushButton_2_clicked()
+{
+  close();
+}
+
+
+
+void WWindow::on_pushButton_16_clicked()
+{
+close();
+}
+
+void WWindow::on_pushButton_12_clicked()
+{
+    hide();
+    patd = new PatientDialog(this);
+    patd->show();
 }

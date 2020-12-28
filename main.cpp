@@ -7,9 +7,13 @@
 #include "connexion.h"
 #include "wwindow.h"
 
+
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    connexion c ;
+bool test=c.ouvrirconnexion();
     WWindow wwindow;
     QMainWindow window;
     try {

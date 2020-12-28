@@ -4,6 +4,7 @@
 #include "connexion.h"
 #include <QTextStream>
 #include <QTextDocument>
+#include"secdialog.h"
 
 
 
@@ -57,7 +58,7 @@ bool facture::supprimer(QString num)
     QSqlQuery query(this->cnx.db.database());
     QString res =num;
     query.prepare("Delete from FACTURE where NUM= :num ");
-    query.bindValue(":num",num);
+    query.bindValue(":num",res);
     return query.exec();
 }
 bool facture::modifier(QString num)
@@ -66,7 +67,7 @@ bool facture::modifier(QString num)
     QSqlQuery query(this->cnx.db.database());
 
 
-    query.prepare("Update FACTURE set   num = :num  where num = :num ") ;
+    query.prepare("UPDATE FACTURE set   NUM=:num WHERE NUM=:num ") ;
 
     query.bindValue(":num", num);
 
@@ -95,24 +96,6 @@ bool facture::existance(QString num)
     bool test=0;
     QSqlQuery query;
     int count=0;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     query.prepare("SELECT * FROM patient WHERE num ?");
     query.addBindValue(num);
@@ -143,7 +126,7 @@ else if (count<1)
 QSqlQueryModel *facture::trier(const QString num )
 {
     QSqlQueryModel *model = new QSqlQueryModel();
-    model->setQuery("select * from facture order by"+num+"");
+    model->setQuery("select * from FACTURE order by num ");
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("NUM"));
     return model;
 }

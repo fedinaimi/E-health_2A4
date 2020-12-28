@@ -21,15 +21,21 @@ SOURCES += \
     facture.cpp \
     main.cpp \
     patient.cpp \
+    patientdialog.cpp \
+    secdialog.cpp \
     wwindow.cpp
 
 HEADERS += \
     connexion.h \
     facture.h \
     patient.h \
+    patientdialog.h \
+    secdialog.h \
     wwindow.h
 
 FORMS += \
+    patientdialog.ui \
+    secdialog.ui \
     wwindow.ui
 
 # Default rules for deployment.

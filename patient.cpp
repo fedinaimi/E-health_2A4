@@ -73,34 +73,32 @@ QSqlQueryModel * patient::afficher()
 
         return model;
 }
-bool patient::supprimer(QString nom,QString prenom,QString sexe,QString num,QString numtel,QString adresse)
+bool patient::supprimer(int numtel)
 {
     QSqlQuery query(this->cnx.db.database());
+    int res=numtel;
 
+    query.prepare("Delete from PATIENT where NUMTEL= numtel ");
 
+    query.bindValue(":numtel",res);
 
-    query.prepare("Delete from PATIENT where (NOM,PRENOM,SEXE,NUM,NUMTEL,ADRESSE) " "VALUES (:nom,:prenom,:sexe,:num,:numtel,:adresse) ");
-    query.bindValue(":nom",nom);
-    query.bindValue(":prenom",prenom);
-    query.bindValue(":sexe",sexe);
-    query.bindValue(":num",num);
-    query.bindValue(":numtel",numtel);
-    query.bindValue(":adresse",adresse);
     return query.exec();
 }
-bool patient::modifier(QString nom,QString prenom,QString sexe,QString num,QString numtel,QString adresse)
+
+bool patient::modifier(QString nom,QString prenom,QString sexe,int num,int numtel,QString adresse)
 {
 
     QSqlQuery query(this->cnx.db.database());
+    int res=numtel;
 
 
-    query.prepare("Update FACTURE set   nom = :nom prenom = :prenom sexe = :sexe num = :num numtel = :numtel adresse = :adresse where num = :num ") ;
+    query.prepare("Update FACTURE set   NOM = :nom, PRENOM = :prenom, SEXE = :sexe, NUM = :num, NUMTEL = :numtel, ADRESSE = :adresse, where NUMTEL = :numtel ") ;
 
     query.bindValue(":nom", nom);
     query.bindValue(":prenom", prenom);
     query.bindValue(":sexe", sexe);
     query.bindValue(":num", num);
-    query.bindValue(":numtel", numtel);
+    query.bindValue(":numtel", res);
     query.bindValue(":adresse", adresse);
 
 
@@ -114,10 +112,10 @@ QSqlQuery patient::getQuery(){
 }
 
 
-QSqlQueryModel *patient ::recherche(QString num)
+QSqlQueryModel *patient ::recherche(QString numtel)
 {
    QSqlQueryModel * model = new QSqlQueryModel();
-   model->setQuery("select * from FACTURE where(NUM LIKE '"+num+"%')");
+   model->setQuery("select * from PATIENT where(NUM LIKE '"+numtel+"%')");
    model->setHeaderData(0, Qt::Horizontal, QObject::tr("NUM"));
    return model;
 }
@@ -173,10 +171,11 @@ else if (count<1)
 
     return test;
 }
-QSqlQueryModel *patient::trier(const QString num )
+QSqlQueryModel *patient::trier(const QString nom )
 {
-    QSqlQueryModel *model = new QSqlQueryModel();
-    model->setQuery("select * from facture order by"+num+"");
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("NUM"));
-    return model;
+    QSqlQueryModel * query = new QSqlQueryModel();
+       query->setQuery("select * from categorie ORDER BY nom");
+       query->setHeaderData(0,Qt::Horizontal,QObject::tr("Nom"));
+
+       return query;
 }

@@ -35,11 +35,11 @@ public:
 
 
     bool ajouter();
-    bool modifier(QString nom,QString prenom,QString sexe,QString num,QString numtel,QString adresse);
-    bool supprimer(QString nom,QString prenom,QString sexe,QString num,QString numtel,QString adresse );
+    bool modifier(QString nom,QString prenom,QString sexe,int num,int numtel,QString adresse);
+    bool supprimer(int numtel);
     QSqlQueryModel * afficher();
-    QSqlQueryModel * recherche(const QString num);
-    QSqlQueryModel * trier(const QString num);
+    QSqlQueryModel * recherche(const QString numtel);
+    QSqlQueryModel * trier(const QString nom);
     bool existance (QString num);
     QSqlQuery getQuery();
 
