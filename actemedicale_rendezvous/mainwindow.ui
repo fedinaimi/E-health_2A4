@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>876</width>
+    <height>625</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,10 +17,10 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>20</y>
-      <width>801</width>
-      <height>561</height>
+      <x>0</x>
+      <y>60</y>
+      <width>761</width>
+      <height>521</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -55,7 +55,7 @@ left: 5px; /* move to the right by 5px */
 tab</string>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -64,8 +64,8 @@ tab</string>
      <widget class="QTabWidget" name="tabWidget_2">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>30</y>
+        <x>50</x>
+        <y>10</y>
         <width>441</width>
         <height>361</height>
        </rect>
@@ -160,21 +160,21 @@ border-radius: 5px;
          <string>ajouter</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="lineEdit">
-        <property name="geometry">
-         <rect>
-          <x>180</x>
-          <y>60</y>
-          <width>113</width>
-          <height>22</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QLineEdit" name="lineEdit_3">
         <property name="geometry">
          <rect>
           <x>180</x>
           <y>120</y>
+          <width>113</width>
+          <height>22</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit">
+        <property name="geometry">
+         <rect>
+          <x>180</x>
+          <y>60</y>
           <width>113</width>
           <height>22</height>
          </rect>
@@ -218,6 +218,19 @@ border:0px;
 }
 
 </string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_8">
+        <property name="geometry">
+         <rect>
+          <x>190</x>
+          <y>300</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>exel</string>
         </property>
        </widget>
       </widget>
@@ -404,10 +417,10 @@ border-radius: 5px;
      <widget class="QTabWidget" name="tabWidget_3">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>40</y>
-        <width>681</width>
-        <height>411</height>
+        <x>40</x>
+        <y>100</y>
+        <width>571</width>
+        <height>331</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -442,7 +455,7 @@ left: 5px; /* move to the right by 5px */
 tab</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_8">
        <attribute name="title">
@@ -497,8 +510,8 @@ tab</string>
        <widget class="QPushButton" name="pushButton_4">
         <property name="geometry">
          <rect>
-          <x>50</x>
-          <y>300</y>
+          <x>120</x>
+          <y>220</y>
           <width>93</width>
           <height>28</height>
          </rect>
@@ -762,13 +775,28 @@ border-radius: 5px;
      </widget>
     </widget>
    </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>871</width>
+      <height>591</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>label_11</zorder>
+   <zorder>tabWidget</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>876</width>
      <height>26</height>
     </rect>
    </property>

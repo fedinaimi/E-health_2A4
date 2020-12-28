@@ -57,6 +57,11 @@ MainWindow::MainWindow(QWidget *parent)
 
 ui->tableView_3->setModel(tmprendez.afficher());//refresh
 ui->tableView_2->setModel(tmpacte.afficher());//refresh
+QPixmap pix7("C:/Users/MSI/Desktop/actemedicale_rendezvous/Resources/Background_color.png");
+             int w7 = ui->label_11->width();
+             int h7 = ui->label_11->height();
+             ui->label_11->setPixmap(pix7.scaled(w7,h7,Qt::IgnoreAspectRatio));
+
 
 }
 
@@ -70,7 +75,9 @@ void MainWindow::on_pushButton_3_clicked()
 {
 
 
-        if( ui->lineEdit->text().isEmpty()|| ui->lineEdit_3->text().isEmpty())
+if (ui->lineEdit->text().isEmpty()||ui->lineEdit_3->text().isEmpty())
+
+
         {
             ui->tableView_2->setModel(tmpacte.afficher());//refresh
                 QMessageBox::warning(nullptr, QObject::tr("Attention"),
@@ -312,3 +319,76 @@ void MainWindow::on_pushButton_7_clicked()
 
             return;
 }
+
+void MainWindow::on_pushButton_8_clicked()
+
+    {
+        QTableView *table;
+
+                        table = ui->tableView_2;
+
+
+                        QString filters("Excel Files (.xls)");
+
+                        QString defaultFilter("Excel Files (*.xls)");
+
+                        QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+
+                                           filters, &defaultFilter);
+
+                        QFile file(fileName);
+
+
+                        QAbstractItemModel *model =  table->model();
+
+                        if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+
+                            QTextStream data(&file);
+
+                            QStringList strList;
+
+                            for (int i = 0; i < model->columnCount(); i++) {
+
+                                if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+
+                                    strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + "\"");
+
+                                else
+
+                                    strList.append("");
+
+                            }
+
+                            data << strList.join(";") << "\n";
+
+                            for (int i = 0; i < model->rowCount(); i++) {
+
+                                strList.clear();
+
+                                for (int j = 0; j < model->columnCount(); j++) {
+
+
+                                    if (model->data(model->index(i, j)).toString().length() > 0)
+
+                                        strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+
+                                    else
+
+                                        strList.append("");
+
+                                }
+
+                                data << strList.join(";") + "\n";
+
+                            }
+
+                            file.close();
+
+                            QMessageBox::information(nullptr, QObject::tr("Export excel"),
+
+                                                      QObject::tr("Export avec succes .\n"
+
+                                                                  "Click OK to exit."), QMessageBox::Ok);
+        }
+    }
+
