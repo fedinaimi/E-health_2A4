@@ -17,7 +17,7 @@
 
 
 
-
+//aaaaaa
 
 
 
@@ -26,7 +26,7 @@ WWindow::WWindow(QWidget *parent) :
     ui(new Ui::WWindow)
 {
     ui->setupUi(this);
-    ui->tableView->setModel(fct.afficher());
+
 
 }
 
