@@ -57,3 +57,4 @@ void SecDialog::on_pushButton_clicked()
 
 
 }
+//aaaaaaaaaaaaaaaaaaaaaa
