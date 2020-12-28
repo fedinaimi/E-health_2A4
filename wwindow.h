@@ -62,6 +62,10 @@ private slots:
     void on_pushButton_8_clicked();
     void on_pushButton_2_clicked();
     void on_pushButton_3_clicked();
+    void on_lineEdit_2_cursorPositionChanged(int arg1, int arg2);
+    void on_lineEdit_9_cursorPositionChanged(int arg1, int arg2);
+    void on_comboBox_activated(const QString &arg1);
+    void on_comboBox_4_activated(const QString &arg1);
 };
 
 #endif // WWINDOW_H

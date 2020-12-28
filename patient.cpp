@@ -52,26 +52,22 @@ else {
 return inserted;
 }
 QSqlQueryModel * patient::afficher()
-{
-    QSqlQueryModel * model= new QSqlQueryModel();
+{ QSqlQueryModel * model= new QSqlQueryModel();
 
-        model->setQuery("select * from PATIENT ");
+    model->setQuery("select * from PATIENT ");
 
-        model->setHeaderData(0, Qt::Horizontal, QObject::tr("nom"));
+    model->setHeaderData(0, Qt::Horizontal, QObject::tr("NOM"));
+    model->setHeaderData(1, Qt::Horizontal, QObject::tr("PRENOM"));
+    model->setHeaderData(2, Qt::Horizontal, QObject::tr("SEXE"));
+    model->setHeaderData(3, Qt::Horizontal, QObject::tr("NUM"));
+    model->setHeaderData(4, Qt::Horizontal, QObject::tr("NUMTEL"));
+    model->setHeaderData(5, Qt::Horizontal, QObject::tr("ADRESSE"));
 
-        model->setHeaderData(1, Qt::Horizontal, QObject::tr("prenom"));
+    model->setQuery("select * from PATIENT order by NUMTEL ");
 
-        model->setHeaderData(2, Qt::Horizontal, QObject::tr("sexe"));
+     model->setQuery("SELECT NOM, PRENOM, SEXE, NUM, NUMTEL, ADRESSE FROM PATIENT ORDER BY NUMTEL ");
+    return model;
 
-        model->setHeaderData(3, Qt::Horizontal, QObject::tr("num"));
-
-        model->setHeaderData(4, Qt::Horizontal, QObject::tr("numtel"));
-
-        model->setHeaderData(5, Qt::Horizontal, QObject::tr("adresse"));
-
-
-
-        return model;
 }
 bool patient::supprimer(int numtel)
 {
@@ -114,10 +110,17 @@ QSqlQuery patient::getQuery(){
 
 QSqlQueryModel *patient ::recherche(QString numtel)
 {
-   QSqlQueryModel * model = new QSqlQueryModel();
-   model->setQuery("select * from PATIENT where(NUM LIKE '"+numtel+"%')");
-   model->setHeaderData(0, Qt::Horizontal, QObject::tr("NUM"));
-   return model;
+    QSqlQueryModel * model= new QSqlQueryModel();
+
+           model->setQuery("SELECT * FROM PATIENT WHERE NUMTEL LIKE '%"+numtel+"%'");
+           model->query().bindValue(":numtel",numtel);
+           model->setHeaderData(0, Qt::Horizontal, QObject::tr("NOM"));
+                   model->setHeaderData(1, Qt::Horizontal, QObject::tr("PRENOM"));
+                   model->setHeaderData(2, Qt::Horizontal, QObject::tr("SEXE"));
+                   model->setHeaderData(3, Qt::Horizontal, QObject::tr("NUM"));
+                   model->setHeaderData(4, Qt::Horizontal, QObject::tr("NUMTEL"));
+                   model->setHeaderData(5, Qt::Horizontal, QObject::tr("ADRESSE"));
+    return model;
 }
 bool patient::existance(QString num)
 {
@@ -171,11 +174,11 @@ else if (count<1)
 
     return test;
 }
-QSqlQueryModel *patient::trier(const QString nom )
+/*QSqlQueryModel *patient::trier(const QString nom )
 {
     QSqlQueryModel * query = new QSqlQueryModel();
        query->setQuery("select * from categorie ORDER BY nom");
-       query->setHeaderData(0,Qt::Horizontal,QObject::tr("Nom"));
+       query->setHeaderData(0,Qt::Horizontal,QObject::tr("NOM"));
 
        return query;
-}
+}*/

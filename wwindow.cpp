@@ -338,3 +338,8 @@ void WWindow::on_pushButton_12_clicked()
     patd = new PatientDialog(this);
     patd->show();
 }
+
+void WWindow::on_lineEdit_9_cursorPositionChanged(const QString &arg2)
+{
+   ui->tableView_2->setModel(ptn.recherche(arg2));;
+}

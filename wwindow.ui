@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab">
     <attribute name="title">
@@ -404,7 +404,7 @@
       <rect>
        <x>290</x>
        <y>20</y>
-       <width>381</width>
+       <width>411</width>
        <height>131</height>
       </rect>
      </property>
@@ -416,18 +416,18 @@
        <rect>
         <x>10</x>
         <y>40</y>
-        <width>141</width>
+        <width>171</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>entrer le numero du patient</string>
+       <string>entrer le numero de tel du patient</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEdit_9">
       <property name="geometry">
        <rect>
-        <x>160</x>
+        <x>200</x>
         <y>40</y>
         <width>113</width>
         <height>20</height>
@@ -437,7 +437,7 @@
      <widget class="QPushButton" name="pushButton_10">
       <property name="geometry">
        <rect>
-        <x>300</x>
+        <x>330</x>
         <y>40</y>
         <width>75</width>
         <height>23</height>
@@ -458,7 +458,32 @@
       </property>
       <item>
        <property name="text">
+        <string>NOM</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>PRENOM</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>SEXE</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
         <string>NUM</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>NUMTEL</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ADRESSE</string>
        </property>
       </item>
      </widget>

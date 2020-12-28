@@ -97,7 +97,7 @@ bool facture::existance(QString num)
     QSqlQuery query;
     int count=0;
 
-    query.prepare("SELECT * FROM patient WHERE num ?");
+    query.prepare("SELECT * FROM facture WHERE num ?");
     query.addBindValue(num);
     if(query.exec() )
     {
@@ -123,10 +123,10 @@ else if (count<1)
 
     return test;
 }
-QSqlQueryModel *facture::trier(const QString num )
+/*QSqlQueryModel *facture::trier(const QString num)
 {
-    QSqlQueryModel *model = new QSqlQueryModel();
-    model->setQuery("select * from FACTURE order by num ");
-    model->setHeaderData(0, Qt::Horizontal, QObject::tr("NUM"));
-    return model;
-}
+    QSqlQueryModel * query = new QSqlQueryModel();
+       query->setQuery("select * from FACTURE order by num");
+       query->setHeaderData(0,Qt::Horizontal,QObject::tr("num"));
+       return query;
+}*/
