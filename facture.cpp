@@ -123,10 +123,3 @@ else if (count<1)
 
     return test;
 }
-/*QSqlQueryModel *facture::trier(const QString num)
-{
-    QSqlQueryModel * query = new QSqlQueryModel();
-       query->setQuery("select * from FACTURE order by num");
-       query->setHeaderData(0,Qt::Horizontal,QObject::tr("num"));
-       return query;
-}*/

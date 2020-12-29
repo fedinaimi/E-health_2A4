@@ -174,11 +174,3 @@ else if (count<1)
 
     return test;
 }
-/*QSqlQueryModel *patient::trier(const QString nom )
-{
-    QSqlQueryModel * query = new QSqlQueryModel();
-       query->setQuery("select * from categorie ORDER BY nom");
-       query->setHeaderData(0,Qt::Horizontal,QObject::tr("NOM"));
-
-       return query;
-}*/

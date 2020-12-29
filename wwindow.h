@@ -66,6 +66,7 @@ private slots:
     void on_lineEdit_9_cursorPositionChanged(int arg1, int arg2);
     void on_comboBox_activated(const QString &arg1);
     void on_comboBox_4_activated(const QString &arg1);
+    void on_lineEdit_9_textChanged(const QString &arg1);
 };
 
 #endif // WWINDOW_H

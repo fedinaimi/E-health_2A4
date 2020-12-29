@@ -39,7 +39,6 @@ public:
     bool supprimer(int numtel);
     QSqlQueryModel * afficher();
     QSqlQueryModel * recherche(const QString numtel);
-    //QSqlQueryModel * trier(const QString nom);
     bool existance (QString num);
     QSqlQuery getQuery();
 
