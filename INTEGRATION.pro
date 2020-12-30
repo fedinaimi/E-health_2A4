@@ -3,6 +3,8 @@ QT+= sql
 QT       +=printsupport
 QT += charts
 QT += datavisualization
+QT += texttospeech
+QT += multimedia
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -24,7 +26,7 @@ SOURCES += \
     commande.cpp \
     connexion.cpp \
     fournisseur.cpp \
-    login.cpp \
+    loginsystem.cpp \
     main.cpp \
     mainwindow.cpp \
     produit.cpp \
@@ -37,14 +39,14 @@ HEADERS += \
     commande.h \
     connexion.h \
     fournisseur.h \
-    login.h \
+    loginsystem.h \
     mainwindow.h \
     produit.h \
     rendezvous.h \
     utilisateur.h
 
 FORMS += \
-    login.ui \
+    loginsystem.ui \
     mainwindow.ui
 
 # Default rules for deployment.
@@ -53,7 +55,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    desi.qrc
+    resources.qrc
 
 DISTFILES += \
     sources/docteur-medecine-tenant-comprime-couleur-capsule-dans-main-connexion-reseau-medical-icone-concept-reseau-technologie-medicale_34200-324.jpg \

@@ -18,7 +18,7 @@ public:
         this->nom=nom;
         this->code=code;
         this->d=d;
-       ;
+
     }
     void setnum(QString num){this->num=num;}
     QString getnum(){return this->num;}

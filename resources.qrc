@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>Resources/Background_color.png</file>
+        <file>Resources/afterinfinity-science-medicine-royalty-free-music.mp3</file>
+    </qresource>
+</RCC>

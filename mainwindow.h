@@ -7,9 +7,11 @@
 #include <QMessageBox>
 #include <QSystemTrayIcon>
 #include "actemedicale.h"
+#include <QMediaPlayer>
 
 
 #include "ui_mainwindow.h"
+#include "loginsystem.h"
 
 
 
@@ -70,6 +72,9 @@
 #include "commande.h"
 #include "utilisateur.h"
 #include "login.h"
+#include"qdb.h"
+#include"loginsystem.h"
+
 
 
 
@@ -172,8 +177,13 @@ private slots:
 
     void on_pushButton_25_clicked();
 
+    void on_pushButton_29_clicked();
+
+    void on_pushButton_32_clicked();
+
 private:
     Ui::MainWindow *ui;
+
     PRODUIT tmpproduit;
     FOURNISSEUR tmpfournisseur ;
     actemedicale tmpacte ;

@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "loginsystem.h"
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -9,11 +10,19 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
 
-    ui->tableView->setModel(tmpproduit.afficher());
-     ui->tableView_2->setModel(tmpfournisseur.afficher());//refresh
-     ui->tableView_9->setModel(tmprendez.afficher());//refresh
-     ui->tableView_7->setModel(tmpacte.afficher());//refresh
+
  ui->tableView_11->setModel(ajt.afficher());
+ QPixmap pix7("C:/Users/fadi/Desktop/QT/integration/Resources/Background_color.png");
+              int w7 = ui->label_47->width();
+              int h7 = ui->label_47->height();
+              ui->label_47->setPixmap(pix7.scaled(w7,h7,Qt::IgnoreAspectRatio));
+              ui->tableView->setModel(tmpproduit.afficher());
+
+               ui->tableView_2->setModel(tmpfournisseur.afficher());//refresh
+               ui->tableView_9->setModel(tmprendez.afficher());//refresh
+
+              ui->tableView_7->setModel(tmpacte.afficher());//refresh
+
 }
 
 MainWindow::~MainWindow()
@@ -725,5 +734,83 @@ void MainWindow::on_pushButton_25_clicked()
             ui->lineEdit_36->clear();
             ui->comboBox_3->clear();
             ui->lineEdit_37->clear();
+
+}
+
+void MainWindow::on_pushButton_29_clicked()
+{
+
+        QTableView *table;
+
+                        table = ui->tableView;
+
+
+                        QString filters("Excel Files (.xls)");
+
+                        QString defaultFilter("Excel Files (*.xls)");
+
+                        QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+
+                                           filters, &defaultFilter);
+
+                        QFile file(fileName);
+
+
+                        QAbstractItemModel *model =  table->model();
+
+                        if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+
+                            QTextStream data(&file);
+
+                            QStringList strList;
+
+                            for (int i = 0; i < model->columnCount(); i++) {
+
+                                if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+
+                                    strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + "\"");
+
+                                else
+
+                                    strList.append("");
+
+                            }
+
+                            data << strList.join(";") << "\n";
+
+                            for (int i = 0; i < model->rowCount(); i++) {
+
+                                strList.clear();
+
+                                for (int j = 0; j < model->columnCount(); j++) {
+
+
+                                    if (model->data(model->index(i, j)).toString().length() > 0)
+
+                                        strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+
+                                    else
+
+                                        strList.append("");
+
+                                }
+
+                                data << strList.join(";") + "\n";
+
+                            }
+
+                            file.close();
+
+                            QMessageBox::information(nullptr, QObject::tr("Export excel"),
+
+                                                      QObject::tr("Export avec succes .\n"
+
+                                                                  "Click OK to exit."), QMessageBox::Ok);
+        }
+
+}
+
+void MainWindow::on_pushButton_32_clicked()
+{
 
 }
