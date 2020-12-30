@@ -41,31 +41,31 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     ui->tableView->setModel(ajt.afficher());
-    QPixmap pix7("C:/Users/Admin/Desktop/2A4/achraf/Ressource/Background_color.png");
+    QPixmap pix7("C:/Users/Admin/Documents/achraf/Ressource/Background_color.png");
              int w7 = ui->label_10->width();
              int h7 = ui->label_10->height();
              ui->label_10->setPixmap(pix7.scaled(w7,h7,Qt::IgnoreAspectRatio));
-             ui->pushButton->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-ui->pushButton_2->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-ui->pushButton_3->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-ui->pushButton_4->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-ui->pushButton_5->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-ui->pushButton_6->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-ui->pushButton_8->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-ui->pushButton_9->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-ui->pushButton_10->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-ui->pushButton_7->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-QPixmap pix("C:/Users/Admin/Desktop/2A4/achraf/Ressource/Background_color.png");
+             ui->pushButton->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+ui->pushButton_2->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+ui->pushButton_3->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+ui->pushButton_4->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+ui->pushButton_5->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+ui->pushButton_6->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+ui->pushButton_8->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+ui->pushButton_9->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+ui->pushButton_10->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+ui->pushButton_7->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+QPixmap pix("C:/Users/Admin/Documents/achraf/Ressource/Background_color.png");
  int w6 = ui->label_11->width();
  int h6 = ui->label_11->height();
  ui->label_11->setPixmap(pix.scaled(w6,h6,Qt::IgnoreAspectRatio));
-         ui->pushButton_11->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-         ui->pushButton_12->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
-         ui->pushButton_13->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 10pt Bahnschrift;");
-         ui->pushButton_14->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 10pt Bahnschrift;");
-         ui->pushButton_15->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 8pt Bahnschrift;");
-         ui->pushButton_16->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 10pt Bahnschrift;");
-         ui->pushButton_17->setStyleSheet("border-image: url(C:/Users/Admin/Desktop/2A4/achraf/Ressource/button_init.png)3 10 3 10; font: 8pt Bahnschrift;");
+         ui->pushButton_11->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+         ui->pushButton_12->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 12pt Bahnschrift;");
+         ui->pushButton_13->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 10pt Bahnschrift;");
+         ui->pushButton_14->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 10pt Bahnschrift;");
+         ui->pushButton_15->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 8pt Bahnschrift;");
+         ui->pushButton_16->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 10pt Bahnschrift;");
+         ui->pushButton_17->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 8pt Bahnschrift;");
 
 
 
@@ -317,7 +317,7 @@ void MainWindow::on_pushButton_11_clicked()
 {
 
                QString login=ui->lineEdit_6->text();
-                 QString type ;
+                  QString type ;
                if( ui->comboBox->currentIndex()==0 )
                    type="medecin";
 
@@ -419,6 +419,9 @@ void MainWindow::on_lineEdit_6_textChanged(const QString &arg1)
         ui->label_6->setText("");
     }
 }
+
+
+
 
 
 
