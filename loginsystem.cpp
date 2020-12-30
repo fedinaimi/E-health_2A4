@@ -540,7 +540,7 @@ void LoginSystem::on_loginButton_clicked()
 {
 
     this->loggedIn = Login(ui->usernameBox->text(), ui->passwordBox->text());
-hide();
+
 
    if(this->loggedIn)
    {

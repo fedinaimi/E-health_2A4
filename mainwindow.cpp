@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
                ui->tableView_9->setModel(tmprendez.afficher());//refresh
 
               ui->tableView_7->setModel(tmpacte.afficher());//refresh
+              ui->tableView_14->setModel(tmpord.afficher());//refresh
 
 }
 
@@ -813,4 +814,90 @@ void MainWindow::on_pushButton_29_clicked()
 void MainWindow::on_pushButton_32_clicked()
 {
 
+}
+
+void MainWindow::on_pb_ajouter_clicked()
+{
+
+
+    if( ui->line_id->text().isEmpty()|| ui->lineEdit_50->text().isEmpty())
+    {
+        ui->tableView_14->setModel(tmpord.afficher());//refresh
+            QMessageBox::warning(nullptr, QObject::tr("Attention"),
+                        QObject::tr("Veuillez remplir tout les champs.\n"), QMessageBox::Ok);
+    }
+    else
+    {
+    ordonnance o(ui->line_id->text() , ui->lineEdit_50->text());
+    bool test=o.ajouter();
+    if (test)
+    {
+        QMessageBox::information(nullptr, QObject::tr("Ajouter uneORDONNANCE"),
+                          QObject::tr(" ORDONNANCE ajouté.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+        ui->tableView_14->setModel(tmpord.afficher());
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("Ajouter une ORDONNANCE"),
+                          QObject::tr("Erreur !.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+    }
+}
+
+void MainWindow::on_pushButton_34_clicked()
+{
+    QString numero,date;
+
+
+
+        numero=ui->lineEdit_39->text();
+
+        date=ui->dateEdit_2->text();
+
+
+
+
+         ordonnance o(numero,date) ;
+        bool test= o.modifier(date);
+
+        if (test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("Modifier une ordonnance"),
+                              QObject::tr("  rendez-vous Modifié.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+              ui->tableView_14->setModel(tmpord.afficher());//refresh
+        }
+        else
+        {
+            QMessageBox::critical(nullptr, QObject::tr("Modifier une ordonnance"),
+                              QObject::tr("Erreur !.\n"
+                                          "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+
+}
+
+void MainWindow::on_pushButton_31_clicked()
+{
+    QString numero = ui->lineEdit_41->text();
+       ordonnance o;
+       bool test=o.supprimer(numero);
+       ui->tableView_14->setModel(tmprendez.afficher());//refresh
+       if(test)
+       {
+           QMessageBox::information(nullptr, QObject::tr("Supprimer un rendez-vous"),
+                       QObject::tr("rendez-vous supprimé.\n"
+                                   "Click Cancel to exit."), QMessageBox::Cancel);
+       }
+}
+
+void MainWindow::on_lineEdit_39_textChanged(const QString &arg1)
+{
+     ui->tableView_15->setModel(tmpord.recherche(ui->lineEdit_39->text()));
+}
+
+void MainWindow::on_lineEdit_41_textChanged(const QString &arg1)
+{
+     ui->tableView_19->setModel(tmpord.recherche(ui->lineEdit_41->text()));
 }

@@ -43,7 +43,7 @@ left: 5px; /* move to the right by 5px */
 }</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>7</number>
     </property>
     <widget class="QWidget" name="tab_23">
      <attribute name="title">
@@ -287,7 +287,7 @@ left: 5px; /* move to the right by 5px */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
@@ -852,7 +852,7 @@ left: 5px; /* move to the right by 5px */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_8">
        <attribute name="title">
@@ -1443,7 +1443,7 @@ left: 5px; /* move to the right by 5px */
 tab</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_13">
        <attribute name="title">
@@ -2147,7 +2147,7 @@ left: 5px; /* move to the right by 5px */
 tab</string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_21">
        <attribute name="title">
@@ -2732,16 +2732,6 @@ border:0px;
          <string>date</string>
         </property>
        </widget>
-       <widget class="QTableWidget" name="tableWidget_2">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>120</y>
-          <width>231</width>
-          <height>181</height>
-         </rect>
-        </property>
-       </widget>
        <widget class="QPushButton" name="pushButton_34">
         <property name="geometry">
          <rect>
@@ -2755,6 +2745,16 @@ border:0px;
          <string>modifier</string>
         </property>
        </widget>
+       <widget class="QTableView" name="tableView_15">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>100</y>
+          <width>291</width>
+          <height>221</height>
+         </rect>
+        </property>
+       </widget>
       </widget>
       <widget class="QWidget" name="tab_29">
        <attribute name="title">
@@ -2763,8 +2763,8 @@ border:0px;
        <widget class="QPushButton" name="pushButton_31">
         <property name="geometry">
          <rect>
-          <x>360</x>
-          <y>170</y>
+          <x>320</x>
+          <y>140</y>
           <width>93</width>
           <height>28</height>
          </rect>
@@ -2789,8 +2789,8 @@ border-radius: 5px;
        <widget class="QLineEdit" name="lineEdit_41">
         <property name="geometry">
          <rect>
-          <x>310</x>
-          <y>110</y>
+          <x>270</x>
+          <y>20</y>
           <width>171</width>
           <height>22</height>
          </rect>
@@ -2799,14 +2799,24 @@ border-radius: 5px;
        <widget class="QLabel" name="label_56">
         <property name="geometry">
          <rect>
-          <x>50</x>
-          <y>110</y>
+          <x>20</x>
+          <y>20</y>
           <width>251</width>
           <height>21</height>
          </rect>
         </property>
         <property name="text">
          <string>donner numero d'ordonnance a supprimer</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="tableView_19">
+        <property name="geometry">
+         <rect>
+          <x>50</x>
+          <y>70</y>
+          <width>256</width>
+          <height>192</height>
+         </rect>
         </property>
        </widget>
       </widget>
@@ -2857,7 +2867,7 @@ left: 5px; /* move to the right by 5px */
 tab</string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_30">
        <attribute name="title">
@@ -2998,45 +3008,6 @@ border:0px;
 </string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_59">
-        <property name="geometry">
-         <rect>
-          <x>550</x>
-          <y>20</y>
-          <width>111</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>tri selon numero</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_60">
-        <property name="geometry">
-         <rect>
-          <x>550</x>
-          <y>70</y>
-          <width>111</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>tri selon nom</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_61">
-        <property name="geometry">
-         <rect>
-          <x>550</x>
-          <y>130</y>
-          <width>111</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>tri selon prix</string>
-        </property>
-       </widget>
       </widget>
       <widget class="QWidget" name="tab_32">
        <attribute name="title">
@@ -3045,8 +3016,8 @@ border:0px;
        <widget class="QPushButton" name="modifier_3">
         <property name="geometry">
          <rect>
-          <x>120</x>
-          <y>230</y>
+          <x>550</x>
+          <y>180</y>
           <width>93</width>
           <height>28</height>
          </rect>
@@ -3109,9 +3080,9 @@ border-radius: 5px;
        <widget class="QLineEdit" name="lineEdit_57">
         <property name="geometry">
          <rect>
-          <x>140</x>
-          <y>60</y>
-          <width>182</width>
+          <x>551</x>
+          <y>40</y>
+          <width>111</width>
           <height>24</height>
          </rect>
         </property>
@@ -3119,8 +3090,8 @@ border-radius: 5px;
        <widget class="QLabel" name="label_65">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>70</y>
+          <x>420</x>
+          <y>50</y>
           <width>117</width>
           <height>16</height>
          </rect>
@@ -3132,9 +3103,9 @@ border-radius: 5px;
        <widget class="QLineEdit" name="lineEdit_58">
         <property name="geometry">
          <rect>
-          <x>140</x>
-          <y>110</y>
-          <width>181</width>
+          <x>550</x>
+          <y>90</y>
+          <width>111</width>
           <height>24</height>
          </rect>
         </property>
@@ -3142,14 +3113,24 @@ border-radius: 5px;
        <widget class="QLabel" name="label_66">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>110</y>
+          <x>420</x>
+          <y>100</y>
           <width>21</width>
           <height>16</height>
          </rect>
         </property>
         <property name="text">
          <string>prix</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="tableView_17">
+        <property name="geometry">
+         <rect>
+          <x>70</x>
+          <y>60</y>
+          <width>256</width>
+          <height>192</height>
+         </rect>
         </property>
        </widget>
       </widget>
@@ -3178,6 +3159,29 @@ border-radius: 5px;
         </property>
         <property name="text">
          <string>donner numero du medicament a supprimer</string>
+        </property>
+       </widget>
+       <widget class="QTableView" name="tableView_18">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>80</y>
+          <width>256</width>
+          <height>192</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="pushButton_33">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>150</y>
+          <width>93</width>
+          <height>28</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>supprimer</string>
         </property>
        </widget>
       </widget>

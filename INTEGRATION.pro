@@ -29,6 +29,8 @@ SOURCES += \
     loginsystem.cpp \
     main.cpp \
     mainwindow.cpp \
+    medicament.cpp \
+    ordonnance.cpp \
     produit.cpp \
     rendezvous.cpp \
     utilisateur.cpp
@@ -41,6 +43,8 @@ HEADERS += \
     fournisseur.h \
     loginsystem.h \
     mainwindow.h \
+    medicament.h \
+    ordonnance.h \
     produit.h \
     rendezvous.h \
     utilisateur.h

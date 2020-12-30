@@ -74,6 +74,8 @@
 #include "login.h"
 #include"qdb.h"
 #include"loginsystem.h"
+#include "ordonnance.h"
+#include "medicament.h"
 
 
 
@@ -181,6 +183,16 @@ private slots:
 
     void on_pushButton_32_clicked();
 
+    void on_pb_ajouter_clicked();
+
+    void on_pushButton_34_clicked();
+
+    void on_pushButton_31_clicked();
+
+    void on_lineEdit_39_textChanged(const QString &arg1);
+
+    void on_lineEdit_41_textChanged(const QString &arg1);
+
 private:
     Ui::MainWindow *ui;
 
@@ -190,5 +202,6 @@ private:
     rendezvous tmprendez ;
      commande ajt ;
      utilisateur psm ;
+     ordonnance tmpord;
 };
 #endif // MAINWINDOW_H

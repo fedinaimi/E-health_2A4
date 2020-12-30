@@ -71,6 +71,8 @@ private slots:
 
     void on_delAButton_clicked();
 
+    void on_loginButton_clicked(bool checked);
+
 private:
     Ui::LoginSystem *ui;
    QMainWindow *m ;

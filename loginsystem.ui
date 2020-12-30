@@ -174,7 +174,7 @@
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background: #101010;</string>
+        <string notr="true">background:#d2ffff;</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -195,11 +195,15 @@
          <font>
           <family>Droid Sans</family>
           <pointsize>-1</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">text-align: center;
-color: #393;
+         <string notr="true">
+font: 15pt &quot;Algerian&quot;;
+color: #ff0000;
 margin: 0 auto;
 font-size: 35px;
 font-family: 'Droid Sans';</string>
@@ -696,10 +700,16 @@ color: #fefefe;</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">Padding: 1px;
-Border-radius: 5px;
-Background: #393;
-Color: #fefefe;</string>
+         <string notr="true">QPushButton{
+background-color:rgba(0,0,0,50%);
+color:white;
+border:1 solid white;
+border-radius: 5px;
+}
+QPushButton:hover{
+background-color:rgba(255,0,0,50%);
+color:black;
+}</string>
         </property>
         <property name="text">
          <string>SIGN IN</string>
@@ -715,10 +725,16 @@ Color: #fefefe;</string>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">Padding: 1px;
-Border-radius: 5px;
-Background: #933;
-Color: #fefefe;</string>
+         <string notr="true">QPushButton{
+background-color:rgba(0,0,0,50%);
+color:white;
+border:1 solid white;
+border-radius: 5px;
+}
+QPushButton:hover{
+background-color:rgba(255,0,0,50%);
+color:black;
+}</string>
         </property>
         <property name="text">
          <string>SIGN UP</string>
