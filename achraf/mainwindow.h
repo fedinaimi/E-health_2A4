@@ -62,6 +62,8 @@ private slots:
 
     void on_comboBox_activated(const QString &arg1);
 
+    void on_pushButton_18_clicked();
+
 private:
 
     Ui::MainWindow *ui;

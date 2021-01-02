@@ -2,8 +2,11 @@
 #include <QApplication>
 #include <QMessageBox>
 #include "mainwindow1.h"
-
+#include <QtTextToSpeech/QTextToSpeech>
+#include <QTextDocument>
 #include "connection.h"
+#include <QObject>
+#include <QString>
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
@@ -11,7 +14,11 @@ int main(int argc, char *argv[])
     bool test=c.createconnect();
     MainWindow w;
     if(test)
-    {w.show();
+    {
+        w.show();
+        /*QTextToSpeech*m_speech=new QTextToSpeech();
+        m_speech->say("database is open ");*/
+
         QMessageBox::information(nullptr, QObject::tr("database is open"),
                     QObject::tr("connection successful.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);

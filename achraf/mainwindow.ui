@@ -266,7 +266,7 @@
        <rect>
         <x>370</x>
         <y>200</y>
-        <width>501</width>
+        <width>591</width>
         <height>351</height>
        </rect>
       </property>
@@ -317,8 +317,8 @@
         <rect>
          <x>40</x>
          <y>40</y>
-         <width>451</width>
-         <height>192</height>
+         <width>511</width>
+         <height>221</height>
         </rect>
        </property>
       </widget>
@@ -576,6 +576,19 @@
        </property>
        <property name="text">
         <string>empot des utilisateurs</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="pushButton_18">
+       <property name="geometry">
+        <rect>
+         <x>170</x>
+         <y>470</y>
+         <width>151</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>exporter en excel</string>
        </property>
       </widget>
      </widget>

@@ -7,6 +7,7 @@ QT       += core gui sql
 QT       +=multimedia
 QT       +=charts
 QT += widgets
+QT += core gui sql texttospeech widgets multimedia serialport multimediawidgets
 
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -25,6 +26,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    arduino.cpp \
     commande.cpp \
     connection.cpp \
     main.cpp \
@@ -32,6 +34,7 @@ SOURCES += \
     utilisateur.cpp
 
 HEADERS += \
+    arduino.h \
     commande.h \
     connection.h \
     mainwindow.h \
