@@ -83,28 +83,56 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_clicked()
 {
-    QString num=ui->lineEdit->text();
-               QString nom=ui->lineEdit_2->text();
-               QString code=ui->lineEdit_3->text();
-               QString d=ui->lineEdit_4->text();
+
+      QString num=ui->lineEdit->text();
+      QString Nom=ui->lineEdit_2->text();
+      QString code=ui->lineEdit_3->text();
+      QString d=ui->lineEdit_4->text();
+
+      commande c(num,Nom,code,d);
+
+bool test=c.ajouter();
+
+if (        ui->lineEdit->text()!= "" &&
+        ui->lineEdit_2->text()!= "" &&
+        ui->lineEdit_3->text() !="" &&
+        ui->lineEdit_4->text() != "" )
 
 
-               commande c(num, nom, code,d );
-               bool test=c.ajouter();
-               ui->tableView->setModel(ajt.afficher());
-               QMessageBox msgBox;
+
+{
                if (test)
                {
-                   ui->tableView->setModel(ajt.afficher());
-                   msgBox.setText("Ajout avec succés.");
-                   msgBox.exec();
-               }
 
-               ui->lineEdit->clear();
-               ui->lineEdit_2->clear();
-               ui->lineEdit_3->clear();
-               ui->lineEdit_4->clear();
+                   ui->tableView->setModel(c.afficher());
+
+                   QMessageBox::information(nullptr, QObject::tr("Ajouter client"),
+                                           QObject::tr("client ajouté.\n"
+                                                       "Click Cancel to exit."), QMessageBox::Cancel);
+                           }
+                          else{
+                               QMessageBox::information(nullptr, QObject::tr("Ajouter client"),
+                                           QObject::tr("Ajout echoué.\n"
+                                                       "Click Cancel to exit."), QMessageBox::Cancel);
+                           }
+                        }
+
+
+
+
+else {{  QMessageBox::critical(nullptr, QObject::tr("Ajouter client"),
+                               QObject::tr("Ajout echoué ! Cases vides ! .\n"
+                                           "Click Cancel to exit."), QMessageBox::Cancel);
+
 }
+                  }}
+
+
+
+
+
+
+
 
 
 void MainWindow::on_pushButton_4_clicked()
