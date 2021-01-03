@@ -7,6 +7,7 @@
 #include<QtTextToSpeech/QTextToSpeech>
 #include <QMediaPlayer>
 
+
 int main(int argc, char *argv[])
 {
 
@@ -15,6 +16,8 @@ int main(int argc, char *argv[])
 
 
     bool test=c.ouvrirconnexion();
+    QMediaPlayer * player = new QMediaPlayer();
+
 
     LoginSystem l;
 
@@ -25,11 +28,17 @@ int main(int argc, char *argv[])
                     QObject::tr("connection successfull.\n"
                                 "Click Cancel to exit."), QMessageBox::Cancel);
 
-       l.show();
-       QMediaPlayer * player = new QMediaPlayer();
-                   player->setMedia(QUrl("qrc:/afterinfinity-science-medicine-royalty-free-music.mp3"));
-                   player->setVolume(50);
-                   player->play();
+
+
+
+
+        l.show();
+        player->setMedia(QUrl("qrc:/new/prefix1/Resources/afterinfinity-science-medicine-royalty-free-music.mp3"));
+        player->setVolume(100);
+        player->play();
+
+
+
 
 
 

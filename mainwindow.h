@@ -76,6 +76,8 @@
 #include"loginsystem.h"
 #include "ordonnance.h"
 #include "medicament.h"
+#include "patient.h"
+#include "facture.h"
 
 
 
@@ -193,6 +195,44 @@ private slots:
 
     void on_lineEdit_41_textChanged(const QString &arg1);
 
+    void on_modifier_3_clicked();
+
+    void on_pushButton_33_clicked();
+
+    void on_pushButton_35_clicked();
+
+    void on_pushButton_36_clicked();
+
+    void on_pushButton_37_clicked();
+
+    void on_tableView_15_activated(const QModelIndex &index);
+
+    void on_tableView_14_activated(const QModelIndex &index);
+
+    void on_lineEdit_56_textChanged(const QString &arg1);
+
+    void on_line_id_4_textChanged(const QString &arg1);
+
+    void on_lineEdit_52_textChanged(const QString &arg1);
+
+    void on_lineEdit_55_textChanged(const QString &arg1);
+
+    void on_pushButton_38_clicked();
+
+    void on_pushButton_39_clicked();
+
+    void on_pushButton_40_clicked();
+
+    void on_lineEdit_64_textChanged(const QString &arg1);
+
+    void on_lineEdit_63_textChanged(const QString &arg1);
+
+    void on_pushButton_41_clicked();
+
+    void on_pushButton_14_clicked();
+
+    void on_pushButton_42_clicked();
+
 private:
     Ui::MainWindow *ui;
 
@@ -203,5 +243,12 @@ private:
      commande ajt ;
      utilisateur psm ;
      ordonnance tmpord;
+     medicament m;
+     patient p ;
+     facture tmpf;
+
+
+
+
 };
 #endif // MAINWINDOW_H

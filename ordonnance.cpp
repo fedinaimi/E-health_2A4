@@ -8,10 +8,10 @@ ordonnance::ordonnance()
 bool ordonnance::ajouter()
 {
     QSqlQuery query;
- query.prepare("INSERT INTO ORDONNANCE (NUMERO, DATEORD ) " "VALUES (:numero, :date )");
+ query.prepare("INSERT INTO ORDONNANCE (NUMERO,DATEORD) " "VALUES (:numero,:date )");
         query.bindValue(":numero", numero );
 
-        query.bindValue(":numero", date );
+        query.bindValue(":date", date );
 
            return query.exec(); //exec() envoie la requéte pour l'exécuter
 }
@@ -19,7 +19,7 @@ QSqlQueryModel * ordonnance::afficher()
 {
     QSqlQueryModel * model= new QSqlQueryModel();
 
-      //  model->setQuery("select * from ORDONNANCE ");//
+      //  model->setQuery("select * from ORDONNANCE ");
            model->setQuery("select * from ORDONNANCE ORDER BY  NUMERO ");
 
         model->setHeaderData(0, Qt::Horizontal, QObject::tr("NUMERO"));
@@ -41,11 +41,11 @@ bool ordonnance::modifier(QString numero)
 
 
 
-        query.prepare("UPDATE ORDONNANCE SET   DATEORD = :date  WHERE NUMERO = :numero " );
-        query.bindValue(":numero", numero);
+        query.prepare("UPDATE ORDONNANCE SET   DATEORD = :date  where NUMERO = :numero " );
+        query.bindValue(":numero",numero);
 
 
-        query.bindValue(":date", date);
+        query.bindValue(":date",date);
 
         return query.exec();
 }

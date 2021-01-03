@@ -76,6 +76,7 @@ private slots:
 private:
     Ui::LoginSystem *ui;
    QMainWindow *m ;
+    QPropertyAnimation *animation;
 };
 
 #endif // LOGINSYSTEM_H

@@ -1,6 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "loginsystem.h"
+#include <QPropertyAnimation>
+#include <QMediaPlayer>
+#include <QSound>
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -8,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+
 
 
 
@@ -23,6 +29,9 @@ MainWindow::MainWindow(QWidget *parent)
 
               ui->tableView_7->setModel(tmpacte.afficher());//refresh
               ui->tableView_14->setModel(tmpord.afficher());//refresh
+              ui->tableView_16->setModel(m.afficher());//refresh
+                ui->tableView_20->setModel(p.afficher());//refresh
+                ui->tableView_23->setModel(tmpf.afficher());//refresh
 
 }
 
@@ -295,12 +304,12 @@ void MainWindow::on_pushButton_5_clicked()
                     out <<  "<html>\n"
                         "<head>\n"
                         "<meta Content=\"Text/html; charset=Windows-1251\">\n"
-                        <<  QString("<title>%1</title>\n").arg("strTitle")
+                        <<  QString("<title>acte médicale</title>\n").arg("strTitle")
                         <<  "</head>\n"
                         "<body bgcolor=#ffffff link=#5000A0>\n"
 
-                       //     "<align='right'> " << datefich << "</align>"
-                        "<center> <H1>Liste des commandes </H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+                       //     "<align='left'> " << datefich << "</align>"
+                        "<center> <H1>liste des fournisseurs </h2></br></br><table border=4 cellspacing=1 cellpadding=2>\n";
 
                     // headers
                     out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
@@ -513,8 +522,8 @@ void MainWindow::on_pushButton_13_clicked()
     QString strStream;
         QTextStream out(&strStream);
 
-        const int rowCount = ui->tableView_7->model()->rowCount();
-        const int columnCount = ui->tableView_7->model()->columnCount();
+        const int rowCount = ui->tableView_9->model()->rowCount();
+        const int columnCount = ui->tableView_9->model()->columnCount();
 
         out <<  "<html>\n"
             "<head>\n"
@@ -524,12 +533,12 @@ void MainWindow::on_pushButton_13_clicked()
             "<body bgcolor=#ffffff link=#5000A0>\n"
 
            //     "<align='right'> " << datefich << "</align>"
-            "<center> <H1>Liste des commandes </H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+            "<center> <H1>Liste des actes medicaux </H3></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
 
         // headers
         out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
         for (int column = 0; column < columnCount; column++)
-            if (!ui->tableView_7->isColumnHidden(column))
+            if (!ui->tableView_9->isColumnHidden(column))
                 out << QString("<th>%1</th>").arg(ui->tableView_7->model()->headerData(column, Qt::Horizontal).toString());
         out << "</tr></thead>\n";
 
@@ -537,8 +546,8 @@ void MainWindow::on_pushButton_13_clicked()
         for (int row = 0; row < rowCount; row++) {
             out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
             for (int column = 0; column < columnCount; column++) {
-                if (!ui->tableView_7->isColumnHidden(column)) {
-                    QString data = ui->tableView_7->model()->data(ui->tableView_7->model()->index(row, column)).toString().simplified();
+                if (!ui->tableView_9->isColumnHidden(column)) {
+                    QString data = ui->tableView_9->model()->data(ui->tableView_9->model()->index(row, column)).toString().simplified();
                     out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
                 }
             }
@@ -813,8 +822,33 @@ void MainWindow::on_pushButton_29_clicked()
 
 void MainWindow::on_pushButton_32_clicked()
 {
+    if( ui->line_id_3->text().isEmpty()|| ui->lineEdit_38->text().isEmpty()||ui->lineEdit_44->text().isEmpty())
+    {
 
+            QMessageBox::warning(nullptr, QObject::tr("Attention"),
+                        QObject::tr("Veuillez remplir tout les champs.\n"), QMessageBox::Ok);
+            ui->tableView_16->setModel(m.afficher());//refresh
+    }
+    else
+    {
+   medicament me(ui->line_id_3->text(),ui->lineEdit_38->text(),ui->lineEdit_44->text());
+    bool test=me.ajouter();
+    if (test)
+    {
+        QMessageBox::information(nullptr, QObject::tr("Ajouter un medicament"),
+                          QObject::tr(" MEDICAMENT ajouté.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+        ui->tableView_16->setModel(m.afficher());
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("Ajouter une un medicament"),
+                          QObject::tr("Erreur !.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+    }
 }
+
 
 void MainWindow::on_pb_ajouter_clicked()
 {
@@ -854,20 +888,22 @@ void MainWindow::on_pushButton_34_clicked()
 
         numero=ui->lineEdit_39->text();
 
-        date=ui->dateEdit_2->text();
+        date=ui->lineEdit_59->text();
 
 
 
 
          ordonnance o(numero,date) ;
-        bool test= o.modifier(date);
+        bool test= o.modifier(numero);
+
 
         if (test)
         {
             QMessageBox::information(nullptr, QObject::tr("Modifier une ordonnance"),
-                              QObject::tr("  rendez-vous Modifié.\n"
+                              QObject::tr("  ordonnance Modifié.\n"
                                           "Click Cancel to exit."), QMessageBox::Cancel);
-              ui->tableView_14->setModel(tmpord.afficher());//refresh
+            ui->tableView_14->setModel(tmpord.afficher());//refresh
+
         }
         else
         {
@@ -883,11 +919,11 @@ void MainWindow::on_pushButton_31_clicked()
     QString numero = ui->lineEdit_41->text();
        ordonnance o;
        bool test=o.supprimer(numero);
-       ui->tableView_14->setModel(tmprendez.afficher());//refresh
+       ui->tableView_14->setModel(tmpord.afficher());//refresh
        if(test)
        {
-           QMessageBox::information(nullptr, QObject::tr("Supprimer un rendez-vous"),
-                       QObject::tr("rendez-vous supprimé.\n"
+           QMessageBox::information(nullptr, QObject::tr("Supprimer un ordonnance"),
+                       QObject::tr("ordennance supprimé.\n"
                                    "Click Cancel to exit."), QMessageBox::Cancel);
        }
 }
@@ -900,4 +936,413 @@ void MainWindow::on_lineEdit_39_textChanged(const QString &arg1)
 void MainWindow::on_lineEdit_41_textChanged(const QString &arg1)
 {
      ui->tableView_19->setModel(tmpord.recherche(ui->lineEdit_41->text()));
+}
+
+void MainWindow::on_modifier_3_clicked()
+{
+
+        QString num=ui->lineEdit_56->text();
+        QString nom ;
+
+
+        QString prix=ui->lineEdit_58->text();
+
+        medicament m(num,nom,prix);
+       bool test= m.modifier(num);
+       ui->tableView_16->setModel(m.afficher());//refresh
+
+       if (test)
+       {
+           QMessageBox::information(nullptr, QObject::tr("Modifier un   medicament"),
+                             QObject::tr("  medicament Modifié.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
+             ui->tableView_16->setModel(m.afficher());//refresh
+       }
+       else
+       {
+           QMessageBox::critical(nullptr, QObject::tr("Modifier un   medicament"),
+                             QObject::tr("Erreur !.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
+       }
+
+}
+
+void MainWindow::on_pushButton_33_clicked()
+{
+    QMessageBox msgBox ;
+    QString num = ui->line_id_4->text();
+            bool test=m.supprimer(num);
+            if(test)
+            {ui->tableView_16->setModel(m.afficher());//refresh
+                /*QMessageBox::information(nullptr, QObject::tr("Supprimer un medicament"),
+                            QObject::tr("medicament supprimé.\n"
+                                        "Click Cancel to exit."), QMessageBox::Cancel);*/
+                msgBox.setText("medicament supprimé.");
+                msgBox.exec();
+            }
+            else
+            {QMessageBox::critical(nullptr, QObject::tr("Supprimer un medicament"),
+                            QObject::tr("Erreur !.\n"
+                                        "Click Cancel to exit."), QMessageBox::Cancel);}
+
+
+}
+
+void MainWindow::on_pushButton_35_clicked()
+{
+    QString nom=ui->lineEdit_40->text();
+      QString prenom=ui->lineEdit_42->text();
+    QString sexe=ui->lineEdit_43->text();
+    QString num=ui->lineEdit_45->text();
+      QString numtel=ui->lineEdit_46->text();
+    QString adresse=ui->lineEdit_47->text();
+    patient p (nom,prenom,sexe,num,numtel,adresse);
+    bool test=p.ajouter();
+    ui->tableView_20->setModel(p.afficher());
+    QMessageBox msgBox;
+    if (test)
+    {
+        ui->tableView_20->setModel(p.afficher());
+        msgBox.setText("Ajout avec succés.");
+        msgBox.exec();
+    }
+
+    ui->lineEdit_40->clear();
+    ui->lineEdit_42->clear();
+    ui->lineEdit_43->clear();
+    ui->lineEdit_45->clear();
+    ui->lineEdit_46->clear();
+    ui->lineEdit_47->clear();
+}
+
+
+void MainWindow::on_pushButton_36_clicked()
+{
+    ui->tableView_20->setModel(p.afficher());
+        ui->tableView_20->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        QString nom;
+        QString prenom;
+        QString sexe;
+        QString num=ui->lineEdit_52->text();
+        QString numtel=ui->lineEdit_48->text();
+        QString adresse=ui->lineEdit_54->text();
+
+
+        patient p(nom,prenom,sexe,num,numtel,adresse) ;
+        bool test=p.modifier(num);
+        QMessageBox msBox;
+        if(test)
+        {
+            ui->tableView_20->setModel(p.afficher());
+            ui->tableView_20->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+            msBox.setText("modification reussite");
+            msBox.exec();
+        }
+        else
+        {
+            msBox.setText("ERREUR");
+            msBox.exec();
+        }
+
+
+}
+
+
+
+
+
+void MainWindow::on_pushButton_37_clicked()
+{
+    QString num = ui->lineEdit_55->text();
+        patient p ;
+        bool test=p.supprimer(num);
+        ui->tableView_20->setModel(p.afficher());//refresh
+        if(test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("Supprimer un patient"),
+                        QObject::tr("acte médicale supprimé.\n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+}
+
+
+void MainWindow::on_lineEdit_56_textChanged(const QString &arg1)
+{
+    ui->tableView_17->setModel(m.recherche(ui->lineEdit_56->text()));
+}
+
+void MainWindow::on_line_id_4_textChanged(const QString &arg1)
+{
+    ui->tableView_18->setModel(m.recherche(ui->line_id_4->text()));
+}
+
+void MainWindow::on_lineEdit_52_textChanged(const QString &arg1)
+{
+    ui->tableView_21->setModel(p.recherche(ui->lineEdit_52->text()));
+}
+
+void MainWindow::on_lineEdit_55_textChanged(const QString &arg1)
+{
+   ui->tableView_22->setModel(p.recherche(ui->lineEdit_55->text()));
+}
+
+void MainWindow::on_pushButton_38_clicked()
+{
+
+    if( ui->lineEdit_49->text().isEmpty()|| ui->lineEdit_51->text().isEmpty())
+    {
+        ui->tableView_23->setModel(tmpf.afficher());//refresh
+            QMessageBox::warning(nullptr, QObject::tr("Attention"),
+                        QObject::tr("Veuillez remplir tout les champs.\n"), QMessageBox::Ok);
+    }
+    else
+    {
+       facture f(ui->lineEdit_49->text(),ui->lineEdit_51->text());
+    bool test=f.ajouter();
+    if (test)
+    {
+        QMessageBox::information(nullptr, QObject::tr("Ajouter une facture"),
+                          QObject::tr("une facture ajouté.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+        ui->tableView_23->setModel(tmpf.afficher());
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("Ajouter une facture"),
+                          QObject::tr("Erreur !.\n"
+                                      "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+    }
+}
+
+void MainWindow::on_pushButton_39_clicked()
+{
+
+        QString num=ui->lineEdit_63->text();
+        QString solde=ui->lineEdit_61->text();
+
+
+
+
+  facture f(num,solde);
+       bool test= f.modifier(num);
+       ui->tableView_23->setModel(tmpf.afficher());//refresh
+
+       if (test)
+       {
+           QMessageBox::information(nullptr, QObject::tr("Modifier un   facture "),
+                             QObject::tr("  facture Modifié.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
+             ui->tableView_23->setModel(tmpf.afficher());//refresh
+       }
+       else
+       {
+           QMessageBox::critical(nullptr, QObject::tr("Modifier un   facture"),
+                             QObject::tr("Erreur !.\n"
+                                         "Click Cancel to exit."), QMessageBox::Cancel);
+       }
+
+}
+
+void MainWindow::on_pushButton_40_clicked()
+{
+
+    QString num = ui->lineEdit_64->text();
+        facture f;
+        bool test=f.supprimer(num);
+        ui->tableView_23->setModel(tmpf.afficher());//refresh
+        if(test)
+        {
+            QMessageBox::information(nullptr, QObject::tr("Supprimer une facture"),
+                        QObject::tr("facture supprimée.\n"
+                                    "Click Cancel to exit."), QMessageBox::Cancel);
+        }
+}
+void MainWindow::on_lineEdit_64_textChanged(const QString &arg1)
+{
+   ui->tableView_25->setModel(tmpf.recherche(ui->lineEdit_64->text()));
+}
+
+void MainWindow::on_lineEdit_63_textChanged(const QString &arg1)
+{
+    ui->tableView_24->setModel(tmpf.recherche(ui->lineEdit_63->text()));
+}
+
+void MainWindow::on_pushButton_41_clicked()
+{
+    QString strStream;
+                    QTextStream out(&strStream);
+
+                    const int rowCount = ui->tableView_23->model()->rowCount();
+                    const int columnCount = ui->tableView_23->model()->columnCount();
+
+                    out <<  "<html>\n"
+                        "<head>\n"
+                        "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                        <<  QString("<title>%1</title>\n").arg("strTitle")
+                        <<  "</head>\n"
+                        "<body bgcolor=#ffffff link=#5000A0>\n"
+
+                       //     "<align='right'> " << datefich << "</align>"
+                        "<center> <H1>Liste des factures </H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+
+                    // headers
+                    out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
+                    for (int column = 0; column < columnCount; column++)
+                        if (!ui->tableView_23->isColumnHidden(column))
+                            out << QString("<th>%1</th>").arg(ui->tableView_23->model()->headerData(column, Qt::Horizontal).toString());
+                    out << "</tr></thead>\n";
+
+                    // data table
+                    for (int row = 0; row < rowCount; row++) {
+                        out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
+                        for (int column = 0; column < columnCount; column++) {
+                            if (!ui->tableView_23->isColumnHidden(column)) {
+                                QString data = ui->tableView_23->model()->data(ui->tableView_23->model()->index(row, column)).toString().simplified();
+                                out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                            }
+                        }
+                        out << "</tr>\n";
+                    }
+                    out <<  "</table> </center>\n"
+                        "</body>\n"
+                        "</html>\n";
+
+              QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Sauvegarder en PDF", QString(), "*.pdf");
+                if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+
+               QPrinter printer (QPrinter::PrinterResolution);
+                printer.setOutputFormat(QPrinter::PdfFormat);
+               printer.setPaperSize(QPrinter::A4);
+              printer.setOutputFileName(fileName);
+
+               QTextDocument doc;
+                doc.setHtml(strStream);
+                doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+                doc.print(&printer);
+}
+
+void MainWindow::on_pushButton_14_clicked()
+{
+    QString strStream;
+                    QTextStream out(&strStream);
+
+                    const int rowCount = ui->tableView_9->model()->rowCount();
+                    const int columnCount = ui->tableView_9->model()->columnCount();
+
+                    out <<  "<html>\n"
+                        "<head>\n"
+                        "<meta Content=\"Text/html; charset=Windows-1251\">\n"
+                        <<  QString("<title>%1</title>\n").arg("strTitle")
+                        <<  "</head>\n"
+                        "<body bgcolor=#ffffff link=#5000A0>\n"
+
+                       //     "<align='right'> " << datefich << "</align>"
+                        "<center> <H1>Liste des commandes </H1></br></br><table border=1 cellspacing=0 cellpadding=2>\n";
+
+                    // headers
+                    out << "<thead><tr bgcolor=#f0f0f0> <th>Numero</th>";
+                    for (int column = 0; column < columnCount; column++)
+                        if (!ui->tableView_9->isColumnHidden(column))
+                            out << QString("<th>%1</th>").arg(ui->tableView_9->model()->headerData(column, Qt::Horizontal).toString());
+                    out << "</tr></thead>\n";
+
+                    // data table
+                    for (int row = 0; row < rowCount; row++) {
+                        out << "<tr> <td bkcolor=0>" << row+1 <<"</td>";
+                        for (int column = 0; column < columnCount; column++) {
+                            if (!ui->tableView_9->isColumnHidden(column)) {
+                                QString data = ui->tableView_9->model()->data(ui->tableView_9->model()->index(row, column)).toString().simplified();
+                                out << QString("<td bkcolor=0>%1</td>").arg((!data.isEmpty()) ? data : QString("&nbsp;"));
+                            }
+                        }
+                        out << "</tr>\n";
+                    }
+                    out <<  "</table> </center>\n"
+                        "</body>\n"
+                        "</html>\n";
+
+              QString fileName = QFileDialog::getSaveFileName((QWidget* )0, "Sauvegarder en PDF", QString(), "*.pdf");
+                if (QFileInfo(fileName).suffix().isEmpty()) { fileName.append(".pdf"); }
+
+               QPrinter printer (QPrinter::PrinterResolution);
+                printer.setOutputFormat(QPrinter::PdfFormat);
+               printer.setPaperSize(QPrinter::A4);
+              printer.setOutputFileName(fileName);
+
+               QTextDocument doc;
+                doc.setHtml(strStream);
+                doc.setPageSize(printer.pageRect().size()); // This is necessary if you want to hide the page number
+                doc.print(&printer);
+}
+
+void MainWindow::on_pushButton_42_clicked()
+{
+    QTableView *table;
+
+                    table = ui->tableView_7;
+
+
+                    QString filters("Excel Files (.xls)");
+
+                    QString defaultFilter("Excel Files (*.xls)");
+
+                    QString fileName = QFileDialog::getSaveFileName(0, "Save file", QCoreApplication::applicationDirPath(),
+
+                                       filters, &defaultFilter);
+
+                    QFile file(fileName);
+
+
+                    QAbstractItemModel *model =  table->model();
+
+                    if (file.open(QFile::WriteOnly | QFile::Truncate)) {
+
+                        QTextStream data(&file);
+
+                        QStringList strList;
+
+                        for (int i = 0; i < model->columnCount(); i++) {
+
+                            if (model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString().length() > 0)
+
+                                strList.append("\"" + model->headerData(i, Qt::Horizontal, Qt::DisplayRole).toString() + "\"");
+
+                            else
+
+                                strList.append("");
+
+                        }
+
+                        data << strList.join(";") << "\n";
+
+                        for (int i = 0; i < model->rowCount(); i++) {
+
+                            strList.clear();
+
+                            for (int j = 0; j < model->columnCount(); j++) {
+
+
+                                if (model->data(model->index(i, j)).toString().length() > 0)
+
+                                    strList.append("\"" + model->data(model->index(i, j)).toString() + "\"");
+
+                                else
+
+                                    strList.append("");
+
+                            }
+
+                            data << strList.join(";") + "\n";
+
+                        }
+
+                        file.close();
+
+                        QMessageBox::information(nullptr, QObject::tr("Export excel"),
+
+                                                  QObject::tr("Export avec succes .\n"
+
+                                                              "Click OK to exit."), QMessageBox::Ok);
+    }
 }

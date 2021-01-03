@@ -2,5 +2,7 @@
     <qresource prefix="/new/prefix1">
         <file>Resources/Background_color.png</file>
         <file>Resources/afterinfinity-science-medicine-royalty-free-music.mp3</file>
+        <file>Resources/dddde.png</file>
+        <file>Resources/logo.png</file>
     </qresource>
 </RCC>

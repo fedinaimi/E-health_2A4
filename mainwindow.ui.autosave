@@ -43,7 +43,7 @@ left: 5px; /* move to the right by 5px */
 }</string>
     </property>
     <property name="currentIndex">
-     <number>7</number>
+     <number>6</number>
     </property>
     <widget class="QWidget" name="tab_23">
      <attribute name="title">
@@ -2906,7 +2906,7 @@ left: 5px; /* move to the right by 5px */
 tab</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_26">
        <attribute name="title">
@@ -3305,7 +3305,7 @@ left: 5px; /* move to the right by 5px */
 tab</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_30">
        <attribute name="title">
@@ -4211,7 +4211,7 @@ left: 5px; /* move to the right by 5px */
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="tab_39">
        <attribute name="title">
