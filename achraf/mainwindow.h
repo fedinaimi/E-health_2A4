@@ -4,6 +4,8 @@
 #include "utilisateur.h"
 #include <QDialog>
 #include <QMainWindow>
+#include <QSound>
+#include "arduino.h"
 
 
 
@@ -19,12 +21,17 @@ class MainWindow : public QMainWindow
 
     Q_OBJECT;
 
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    int led,alert,messageboxactive;
 
 
 private slots:
+    //arduino
+         void update_label();
+         //finarduino
 
     void on_pushButton_clicked();
 
@@ -69,7 +76,11 @@ private:
     Ui::MainWindow *ui;
     commande ajt ;
     utilisateur psm ;
-
+QSound*clickSound;
+//arduino
+      QByteArray data;
+      Arduino A;
 
 };
+
 #endif // MAINWINDOW_H

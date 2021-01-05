@@ -14,5 +14,6 @@
         <file>Ressource/more.png</file>
         <file>Ressource/pencil.png</file>
         <file>Ressource/prescription.png</file>
+        <file>Ressource/click.wav</file>
     </qresource>
 </RCC>

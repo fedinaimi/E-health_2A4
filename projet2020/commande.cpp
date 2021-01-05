@@ -65,6 +65,7 @@ bool commande::modifier(QString num, QString nom, QString code, QString d )
           return query.exec();
 }
 
+....
 
 
 

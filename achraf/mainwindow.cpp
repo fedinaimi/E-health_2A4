@@ -29,6 +29,7 @@
 #include <QComboBox>
 #include <QWidget>
 #include "QValueAxis"
+#include <QSound>
 
 
 
@@ -68,6 +69,20 @@ QPixmap pix("C:/Users/Admin/Documents/achraf/Ressource/Background_color.png");
          ui->pushButton_17->setStyleSheet("border-image: url(C:/Users/Admin/Documents/achraf/Ressource/button_init.png)3 10 3 10; font: 8pt Bahnschrift;");
 
 
+clickSound=new QSound(":/sounds/click.wav");
+
+// arduino
+      int ret=A.connect_arduino();
+      switch(ret){
+      case(0):qDebug()<< "arduino is availble and connected to :"<< A.getarduino_port_name();
+          break;
+      case(1):qDebug()<< "arduino is availble but not connected to :"<< A.getarduino_port_name();
+          break;
+      case(-1):qDebug()<< "arduino is not availble";
+      }
+      QObject::connect(A.getserial(),SIGNAL(readyRead()),this,SLOT(update_label()));
+
+      //fin arduino
 
 
 }
@@ -80,10 +95,53 @@ MainWindow::~MainWindow()
 }
 
 
+//arduino
+
+void MainWindow::update_label()
+{
+    data=A.read_from_arduino();
+    QString DataAsString = QString(data);
+    qDebug()<< data;
+
+     ui->label_2->setText("temp : "+data);
+
+    if (data=="21"||data=="22"||data=="23"||data=="24"||data=="25"||data=="26"||data=="27"){
+        if (messageboxactive==0){
+            alert=1;
+        }
+
+
+    }
+    if (alert==1){
+         alert=0;
+         messageboxactive=1;
+        int reponse = QMessageBox::question(this, "led", "allumer led", QMessageBox::Yes |  QMessageBox::No);
+                                   if (reponse == QMessageBox::Yes)
+                                   {
+                                     led=1;
+                                   }
+                                   if (reponse == QMessageBox::No)
+                                   {
+                                      led=0;
+                                   }
+
+    }
+    if (led==1){
+        A.write_to_arduino("1");
+    }
+    if (data=="20"||data=="19"||data=="18"||data=="17"||data=="16"||data=="15"||data=="14 "){
+        A.write_to_arduino("0");
+        led=0;
+    }
+
+}
+
+//fin arduino
+
 
 void MainWindow::on_pushButton_clicked()
 {
-
+clickSound->play();
       QString num=ui->lineEdit->text();
       QString Nom=ui->lineEdit_2->text();
       QString code=ui->lineEdit_3->text();
@@ -191,6 +249,9 @@ void MainWindow::on_tableView_clicked(const QModelIndex &index)
 
 void MainWindow::on_pushButton_5_clicked()
 {
+
+
+    clickSound->play();
     QMessageBox msgBox ;
     QString code = ui->lineEdit_3->text();
             bool test=ajt.supprimer(code);
@@ -214,7 +275,7 @@ void MainWindow::on_pushButton_5_clicked()
 }
 
 void MainWindow::on_pushButton_3_clicked()
-{
+{  clickSound->play();
     ui->tableView->setModel(ajt.afficher());
 
 }
