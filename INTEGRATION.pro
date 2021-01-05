@@ -38,6 +38,7 @@ SOURCES += \
     patient.cpp \
     produit.cpp \
     rendezvous.cpp \
+    uti.cpp \
     utilisateur.cpp
 
 HEADERS += \
@@ -54,6 +55,7 @@ HEADERS += \
     patient.h \
     produit.h \
     rendezvous.h \
+    uti.h \
     utilisateur.h
 
 FORMS += \
