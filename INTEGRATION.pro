@@ -5,6 +5,9 @@ QT += charts
 QT += datavisualization
 QT += texttospeech
 QT += multimedia
+QT +=printsupport multimedia network
+QT+= serialport
+
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -25,12 +28,14 @@ SOURCES += \
     arduino.cpp \
     commande.cpp \
     connexion.cpp \
+    facture.cpp \
     fournisseur.cpp \
     loginsystem.cpp \
     main.cpp \
     mainwindow.cpp \
     medicament.cpp \
     ordonnance.cpp \
+    patient.cpp \
     produit.cpp \
     rendezvous.cpp \
     utilisateur.cpp
@@ -40,11 +45,13 @@ HEADERS += \
     arduino.h \
     commande.h \
     connexion.h \
+    facture.h \
     fournisseur.h \
     loginsystem.h \
     mainwindow.h \
     medicament.h \
     ordonnance.h \
+    patient.h \
     produit.h \
     rendezvous.h \
     utilisateur.h
@@ -62,5 +69,6 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
+    Resources/dddde.png \
     sources/docteur-medecine-tenant-comprime-couleur-capsule-dans-main-connexion-reseau-medical-icone-concept-reseau-technologie-medicale_34200-324.jpg \
     sources/logo.png

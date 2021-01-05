@@ -12,6 +12,7 @@
 #include<QDebug>
 #include<QtTextToSpeech/QTextToSpeech>
 #include <QMediaPlayer>
+#include <QPropertyAnimation>
 
 LoginSystem::LoginSystem(QWidget *parent) :
     QMainWindow(parent),
@@ -19,6 +20,12 @@ LoginSystem::LoginSystem(QWidget *parent) :
 {
     MainWindow w ;
     ui->setupUi(this);
+
+    animation = new QPropertyAnimation(ui->cinema, "geometry");
+                animation->setDuration(9000);
+                animation->setStartValue(ui->cinema->geometry());
+                animation->setEndValue(QRect(200,450,100,50));
+                animation->start();
 
     ui->winStack->setCurrentIndex(0);
     ui->stackedWidget->setCurrentIndex(1);
@@ -547,7 +554,9 @@ void LoginSystem::on_loginButton_clicked()
        QMessageBox::information(nullptr, QObject::tr("connexion allowed"),
                    QObject::tr("connection successfull.\n"
                                "Click Cancel to exit."), QMessageBox::Cancel);
-
+ connexion c ;
+   bool test1=c.ouvrirconnexion();
+   if(test1){
   m=new MainWindow(this);
   m->show();
   QTextToSpeech *l_speech=new QTextToSpeech();
@@ -564,4 +573,27 @@ void LoginSystem::on_loginButton_clicked()
 
 }
 
+
+   int con=a.connect_arduino();
+     switch (con){
+        case 0:qDebug()<<"Arduino found and connected";break;
+        case 1:qDebug()<<"Arduino found but not connected";break;
+        case -1:qDebug()<<"Arduino not found and not connected";break;
+     }
+     QObject::connect(a.getserial(),SIGNAL(readyRead()),this,SLOT(read_botton()));
+
 }
+
+
+
+}
+void LoginSystem::read_botton(){
+    arduino a ;
+    data1=a.read_from_arduino();
+    qDebug()<<'data'<<data1;
+    if(data1=="1"){
+        a.write_to_arduino("2");
+   }}
+
+
+

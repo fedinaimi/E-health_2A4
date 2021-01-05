@@ -108,7 +108,7 @@
    </palette>
   </property>
   <property name="windowTitle">
-   <string>Login System 1.0</string>
+   <string>Sayes Rou7ek</string>
   </property>
   <property name="windowIcon">
    <iconset>
@@ -169,12 +169,12 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>751</width>
+         <width>761</width>
          <height>451</height>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background:#d2ffff;</string>
+        <string notr="true">background:#BAB0C6;</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -185,28 +185,25 @@
        <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
-          <x>290</x>
-          <y>22</y>
-          <width>175</width>
-          <height>41</height>
+          <x>230</x>
+          <y>0</y>
+          <width>241</width>
+          <height>131</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <family>Droid Sans</family>
-          <pointsize>-1</pointsize>
+          <family>Bauhaus 93</family>
+          <pointsize>60</pointsize>
           <weight>50</weight>
           <italic>false</italic>
           <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">
-font: 15pt &quot;Algerian&quot;;
-color: #ff0000;
-margin: 0 auto;
-font-size: 35px;
-font-family: 'Droid Sans';</string>
+         <string notr="true">font: 60pt &quot;Bauhaus 93&quot;;
+
+</string>
         </property>
         <property name="text">
          <string>Login</string>
@@ -215,8 +212,8 @@ font-family: 'Droid Sans';</string>
        <widget class="QLineEdit" name="usernameBox">
         <property name="geometry">
          <rect>
-          <x>50</x>
-          <y>248</y>
+          <x>260</x>
+          <y>160</y>
           <width>201</width>
           <height>41</height>
          </rect>
@@ -451,8 +448,8 @@ color: #fefefe;</string>
        <widget class="QLineEdit" name="passwordBox">
         <property name="geometry">
          <rect>
-          <x>50</x>
-          <y>300</y>
+          <x>260</x>
+          <y>250</y>
           <width>201</width>
           <height>41</height>
          </rect>
@@ -693,8 +690,8 @@ color: #fefefe;</string>
        <widget class="QPushButton" name="loginButton">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>354</y>
+          <x>270</x>
+          <y>320</y>
           <width>80</width>
           <height>21</height>
          </rect>
@@ -718,8 +715,8 @@ color:black;
        <widget class="QPushButton" name="regButton">
         <property name="geometry">
          <rect>
-          <x>160</x>
-          <y>354</y>
+          <x>370</x>
+          <y>320</y>
           <width>80</width>
           <height>21</height>
          </rect>
@@ -759,7 +756,7 @@ color:black;
        <widget class="QLabel" name="label_7">
         <property name="geometry">
          <rect>
-          <x>88</x>
+          <x>90</x>
           <y>80</y>
           <width>128</width>
           <height>128</height>
@@ -773,6 +770,47 @@ background-image: url(:/user.png);</string>
          <string/>
         </property>
        </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>-30</y>
+          <width>141</width>
+          <height>181</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/new/prefix1/Resources/logo.png</pixmap>
+        </property>
+       </widget>
+       <widget class="QLabel" name="cinema">
+        <property name="geometry">
+         <rect>
+          <x>630</x>
+          <y>30</y>
+          <width>111</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/new/prefix1/Resources/dddde.png</pixmap>
+        </property>
+       </widget>
+       <zorder>cinema</zorder>
+       <zorder>label</zorder>
+       <zorder>usernameBox</zorder>
+       <zorder>passwordBox</zorder>
+       <zorder>loginButton</zorder>
+       <zorder>regButton</zorder>
+       <zorder>loginLabel</zorder>
+       <zorder>label_7</zorder>
+       <zorder>label_9</zorder>
       </widget>
      </widget>
      <widget class="QWidget" name="page_2">
@@ -786,7 +824,7 @@ background-image: url(:/user.png);</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">background: #101010;</string>
+        <string notr="true">background: #BAB0C6;</string>
        </property>
        <property name="frameShape">
         <enum>QFrame::StyledPanel</enum>
@@ -797,24 +835,24 @@ background-image: url(:/user.png);</string>
        <widget class="QLabel" name="label_2">
         <property name="geometry">
          <rect>
-          <x>258</x>
-          <y>24</y>
-          <width>223</width>
-          <height>41</height>
+          <x>250</x>
+          <y>0</y>
+          <width>401</width>
+          <height>131</height>
          </rect>
         </property>
         <property name="font">
          <font>
-          <family>Droid Sans</family>
-          <pointsize>-1</pointsize>
+          <family>Bauhaus 93</family>
+          <pointsize>40</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">text-align: center;
-color: #393;
-margin: 0 auto;
-font-size: 35px;
-font-family: 'Droid Sans';</string>
+         <string notr="true">font: 40pt &quot;Bauhaus 93&quot;;
+</string>
         </property>
         <property name="text">
          <string>Register</string>
@@ -1301,17 +1339,23 @@ color: #fefefe;</string>
        <widget class="QPushButton" name="completeRegButton">
         <property name="geometry">
          <rect>
-          <x>540</x>
-          <y>400</y>
+          <x>510</x>
+          <y>360</y>
           <width>171</width>
-          <height>21</height>
+          <height>31</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">Padding: 1px;
-Border-radius: 5px;
-Background: #393;
-Color: #fefefe;</string>
+         <string notr="true">QPushButton{
+background-color:rgba(0,0,0,50%);
+color:white;
+border:1 solid white;
+border-radius: 5px;
+}
+QPushButton:hover{
+background-color:rgba(255,0,0,50%);
+color:black;
+}</string>
         </property>
         <property name="text">
          <string>COMPLETE REGISTRATION</string>
@@ -2288,17 +2332,23 @@ color: #fefefe;</string>
        <widget class="QPushButton" name="backButton">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>400</y>
+          <x>80</x>
+          <y>360</y>
           <width>171</width>
-          <height>21</height>
+          <height>31</height>
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">Padding: 1px;
-Border-radius: 5px;
-Background: #933;
-Color: #fefefe;</string>
+         <string notr="true">QPushButton{
+background-color:rgba(0,0,0,50%);
+color:white;
+border:1 solid white;
+border-radius: 5px;
+}
+QPushButton:hover{
+background-color:rgba(255,0,0,50%);
+color:black;
+}</string>
         </property>
         <property name="text">
          <string>BACK TO LOGIN PAGE</string>
@@ -2353,6 +2403,22 @@ Color: #fefefe;</string>
         </property>
         <property name="text">
          <string>UPLOAD PICTURE</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_11">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>20</y>
+          <width>111</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="resources.qrc">:/new/prefix1/Resources/logo.png</pixmap>
         </property>
        </widget>
       </widget>
@@ -4512,6 +4578,8 @@ Color: #fefefe;</string>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

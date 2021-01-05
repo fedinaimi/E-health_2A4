@@ -70,12 +70,16 @@ private slots:
     void on_adminBrowse_clicked();
 
     void on_delAButton_clicked();
+   void read_botton();
 
-    void on_loginButton_clicked(bool checked);
+    //void on_loginButton_clicked(bool checked);
 
 private:
     Ui::LoginSystem *ui;
    QMainWindow *m ;
+    QPropertyAnimation *animation;
+      arduino a ;
+      QByteArray data1;
 };
 
 #endif // LOGINSYSTEM_H

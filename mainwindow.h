@@ -8,6 +8,8 @@
 #include <QSystemTrayIcon>
 #include "actemedicale.h"
 #include <QMediaPlayer>
+#include "arduino.h"
+#include <QObject>
 
 
 #include "ui_mainwindow.h"
@@ -76,6 +78,8 @@
 #include"loginsystem.h"
 #include "ordonnance.h"
 #include "medicament.h"
+#include "patient.h"
+#include "facture.h"
 
 
 
@@ -119,7 +123,7 @@ private slots:
 
     void on_lineEdit_17_cursorPositionChanged(int arg1, int arg2);
 
-    void on_lineEdit_6_selectionChanged();
+    //void on_lineEdit_6_selectionChanged();
 
     void on_pushButton_9_clicked();
 
@@ -129,7 +133,7 @@ private slots:
 
     void on_pushButton_7_clicked();
 
-    void on_lineEdit_7_cursorPositionChanged(int arg1, int arg2);
+    //void on_lineEdit_7_cursorPositionChanged(int arg1, int arg2);
 
     void on_lineEdit_7_textChanged(const QString &arg1);
 
@@ -137,15 +141,15 @@ private slots:
 
     void on_lineEdit_18_cursorPositionChanged(int arg1, int arg2);
 
-    void on_tabWidget_2_currentChanged(int index);
+    //void on_tabWidget_2_currentChanged(int index);
 
-    void on_comboBox_activated(const QString &arg1);
+   // void on_comboBox_activated(const QString &arg1);
 
     void on_pushButton_5_clicked();
 
     void on_pushButton_6_clicked();
 
-    void on_widget_customContextMenuRequested(const QPoint &pos);
+   // void on_widget_customContextMenuRequested(const QPoint &pos);
 
     void on_pushButton_8_clicked();
 
@@ -193,6 +197,54 @@ private slots:
 
     void on_lineEdit_41_textChanged(const QString &arg1);
 
+    void on_modifier_3_clicked();
+
+    void on_pushButton_33_clicked();
+
+    void on_pushButton_35_clicked();
+
+    void on_pushButton_36_clicked();
+
+    void on_pushButton_37_clicked();
+
+    //void on_tableView_15_activated(const QModelIndex &index);
+
+    //void on_tableView_14_activated(const QModelIndex &index);
+
+    void on_lineEdit_56_textChanged(const QString &arg1);
+
+    void on_line_id_4_textChanged(const QString &arg1);
+
+    void on_lineEdit_52_textChanged(const QString &arg1);
+
+    void on_lineEdit_55_textChanged(const QString &arg1);
+
+    void on_pushButton_38_clicked();
+
+    void on_pushButton_39_clicked();
+
+    void on_pushButton_40_clicked();
+
+    void on_lineEdit_64_textChanged(const QString &arg1);
+
+    void on_lineEdit_63_textChanged(const QString &arg1);
+
+    void on_pushButton_41_clicked();
+
+    void on_pushButton_14_clicked();
+
+    void on_pushButton_42_clicked();
+
+    void on_pushButton_27_clicked();
+
+    void on_pushButton_30_clicked();
+
+    void on_pushButton_19_clicked();
+
+    void read_botton();
+
+
+
 private:
     Ui::MainWindow *ui;
 
@@ -203,5 +255,13 @@ private:
      commande ajt ;
      utilisateur psm ;
      ordonnance tmpord;
+     medicament m;
+     patient p ;
+     facture tmpf;
+     QMainWindow *window ;
+    arduino a ;
+    QByteArray data1;
+
+
 };
 #endif // MAINWINDOW_H
