@@ -14,10 +14,13 @@ bool commande::ajouter()
     QSqlQuery query;
 
 
+
+
         query.prepare("INSERT INTO CMD (NUM, NOM, CODE,D) " "VALUES (:num, :nom, :code, :d)");
         query.bindValue(":num", num);
         query.bindValue(":nom", nom);
         query.bindValue(":code", code);
+        query.bindValue(":d", d);
         query.bindValue(":d", d);
 
         return query.exec();

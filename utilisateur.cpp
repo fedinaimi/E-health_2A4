@@ -17,6 +17,7 @@ utilisateur::utilisateur(QString login,  QString type,  QString mdp)
 this->login=login;
 this->type=type;
 this->mdp=mdp;
+    this->mdp=mdp;
 }
 
 bool utilisateur::ajouter()

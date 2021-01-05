@@ -18,6 +18,7 @@ public:
         this->nom=nom;
         this->code=code;
         this->d=d;
+       this->d=d;
 
     }
     void setnum(QString num){this->num=num;}
